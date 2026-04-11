@@ -24,17 +24,23 @@ export default function Experience({ experience }) {
                   <h3 className="text-xl font-bold text-text-primary">{job.company}</h3>
                   <p className="text-accent font-medium">{job.role}</p>
                   <p className="text-text-muted text-sm mt-1">{job.period}</p>
+                  {job.client && (
+                    <p className="text-text-muted text-xs mt-1 italic">Client: {job.client}</p>
+                  )}
                 </div>
                 {job.logo && (
                   <img src={job.logo} alt={job.company} className="h-10 object-contain opacity-80" />
                 )}
               </div>
 
-              <div className="mt-6 space-y-4">
+              <div className="mt-6 space-y-6">
                 {job.projects.map((proj, j) => (
                   <div key={j}>
                     <h4 className="font-semibold text-text-primary">{proj.title}</h4>
-                    <ul className="mt-2 space-y-1">
+                    {proj.description && (
+                      <p className="text-text-muted text-sm mt-1 leading-relaxed italic">{proj.description}</p>
+                    )}
+                    <ul className="mt-3 space-y-1">
                       {proj.bullets.map((b, k) => (
                         <li key={k} className="text-text-muted text-sm flex gap-2">
                           <span className="text-accent mt-1 flex-shrink-0">›</span>
@@ -42,6 +48,12 @@ export default function Experience({ experience }) {
                         </li>
                       ))}
                     </ul>
+                    {proj.tech && (
+                      <p className="mt-3 text-xs text-elevated bg-primary/50 rounded px-3 py-1.5">
+                        <span className="text-accent font-medium">Tech: </span>
+                        {proj.tech}
+                      </p>
+                    )}
                   </div>
                 ))}
               </div>
