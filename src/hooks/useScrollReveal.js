@@ -1,28 +1,25 @@
+// Returns props for a scroll-reveal animated element.
+// Uses object-based initial (not variant string) to prevent flash-of-content.
+export function revealProps(delay = 0, threshold = 0.15) {
+  return {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: threshold },
+    transition: { duration: 0.55, ease: 'easeOut', delay },
+  }
+}
+
+// Kept for backward compatibility with any imports that reference these
 export const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
-  },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: 'easeOut' } },
 }
 
 export const staggerContainer = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.15 },
-  },
+  visible: { transition: { staggerChildren: 0.12 } },
 }
 
-// Returns props to spread onto a motion element for scroll-reveal
-export function useScrollReveal(threshold = 0.15) {
-  return {
-    scrollProps: {
-      initial: 'hidden',
-      whileInView: 'visible',
-      viewport: { once: true, amount: threshold },
-    },
-    fadeUp,
-    staggerContainer,
-  }
+export function useScrollReveal() {
+  return { revealProps }
 }

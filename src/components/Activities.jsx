@@ -1,22 +1,16 @@
 import { motion } from 'framer-motion'
-import { useScrollReveal, staggerContainer, fadeUp } from '../hooks/useScrollReveal'
+import { revealProps } from '../hooks/useScrollReveal'
 import { SectionHeading } from './About'
 
 export default function Activities({ activities }) {
-  const { scrollProps } = useScrollReveal()
-
   return (
     <section id="activities" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
         <SectionHeading>Extra Curricular Activities</SectionHeading>
 
-        <motion.div
-          {...scrollProps}
-          variants={staggerContainer}
-          className="mt-10 space-y-8"
-        >
+        <div className="mt-10 space-y-8">
           {activities.map((entry, i) => (
-            <motion.div key={i} variants={fadeUp}>
+            <motion.div key={i} {...revealProps(i * 0.1)}>
               <h3 className="text-accent font-bold text-lg">{entry.year}</h3>
               <ul className="mt-3 space-y-2">
                 {entry.items.map((item, j) => (
@@ -28,7 +22,7 @@ export default function Activities({ activities }) {
               </ul>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

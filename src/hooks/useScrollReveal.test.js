@@ -1,19 +1,23 @@
 import { describe, it, expect } from 'vitest'
 import { renderHook } from '@testing-library/react'
-import { useScrollReveal, fadeUp, staggerContainer } from './useScrollReveal'
+import { useScrollReveal, revealProps, fadeUp, staggerContainer } from './useScrollReveal'
 
 describe('useScrollReveal', () => {
-  it('returns scrollProps with whileInView', () => {
+  it('returns revealProps function', () => {
     const { result } = renderHook(() => useScrollReveal())
-    expect(result.current.scrollProps.initial).toBe('hidden')
-    expect(result.current.scrollProps.whileInView).toBe('visible')
-    expect(result.current.scrollProps.viewport).toBeDefined()
+    expect(typeof result.current.revealProps).toBe('function')
   })
 
-  it('returns fadeUp variants', () => {
-    const { result } = renderHook(() => useScrollReveal())
-    expect(result.current.fadeUp.hidden).toBeDefined()
-    expect(result.current.fadeUp.visible).toBeDefined()
+  it('revealProps returns correct animation props', () => {
+    const props = revealProps()
+    expect(props.initial.opacity).toBe(0)
+    expect(props.whileInView.opacity).toBe(1)
+    expect(props.viewport.once).toBe(true)
+  })
+
+  it('revealProps applies delay', () => {
+    const props = revealProps(0.3)
+    expect(props.transition.delay).toBe(0.3)
   })
 })
 

@@ -1,24 +1,18 @@
 import { motion } from 'framer-motion'
-import { useScrollReveal, staggerContainer, fadeUp } from '../hooks/useScrollReveal'
+import { revealProps } from '../hooks/useScrollReveal'
 import { SectionHeading } from './About'
 
 export default function Education({ education }) {
-  const { scrollProps } = useScrollReveal()
-
   return (
     <section id="education" className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <SectionHeading>Education</SectionHeading>
 
-        <motion.div
-          {...scrollProps}
-          variants={staggerContainer}
-          className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6"
-        >
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
           {education.map((edu, i) => (
             <motion.div
               key={i}
-              variants={fadeUp}
+              {...revealProps(i * 0.1)}
               className="bg-surface rounded-lg p-6 border border-elevated"
             >
               <h3 className="text-text-primary font-bold">{edu.institution}</h3>
@@ -29,7 +23,7 @@ export default function Education({ education }) {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )

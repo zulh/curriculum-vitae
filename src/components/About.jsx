@@ -1,12 +1,10 @@
 import { motion } from 'framer-motion'
-import { useScrollReveal } from '../hooks/useScrollReveal'
+import { revealProps } from '../hooks/useScrollReveal'
 
 export default function About({ profile }) {
-  const { scrollProps, fadeUp } = useScrollReveal()
-
   return (
     <section id="about" className="py-24 px-6 max-w-4xl mx-auto">
-      <motion.div {...scrollProps} variants={fadeUp}>
+      <motion.div {...revealProps()}>
         <SectionHeading>Personal Profile</SectionHeading>
         <p className="text-text-muted leading-relaxed text-lg mt-6">{profile}</p>
       </motion.div>

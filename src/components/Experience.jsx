@@ -1,22 +1,16 @@
 import { motion } from 'framer-motion'
-import { useScrollReveal, staggerContainer, fadeUp } from '../hooks/useScrollReveal'
+import { revealProps } from '../hooks/useScrollReveal'
 import { SectionHeading } from './About'
 
 export default function Experience({ experience }) {
-  const { scrollProps } = useScrollReveal()
-
   return (
     <section id="experience" className="py-24 px-6 bg-surface">
       <div className="max-w-4xl mx-auto">
         <SectionHeading>Industrial Exposure</SectionHeading>
 
-        <motion.div
-          {...scrollProps}
-          variants={staggerContainer}
-          className="mt-12 relative border-l-2 border-elevated pl-8 space-y-12"
-        >
+        <div className="mt-12 relative border-l-2 border-elevated pl-8 space-y-12">
           {experience.map((job, i) => (
-            <motion.div key={i} variants={fadeUp} className="relative">
+            <motion.div key={i} {...revealProps(i * 0.1)} className="relative">
               <span className="absolute -left-[2.85rem] top-1 w-4 h-4 rounded-full bg-accent border-4 border-primary" />
 
               <div className="flex items-start justify-between flex-wrap gap-4">
@@ -59,7 +53,7 @@ export default function Experience({ experience }) {
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   )
