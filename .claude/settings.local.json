@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bash:*)",
+      "Bash(cat \"C:/Users/MAHESHSenang/Documents/Projects/curriculum-vitae-zul/.superpowers/brainstorm/\"*/state/server-info)",
+      "Bash(printf \"2\\\\n\")",
+      "Bash(npm create:*)",
+      "Bash(npx create-vite@latest . --template react --yes)",
+      "Bash(npx --yes create-vite@latest . --template react)",
+      "Bash(echo \"Exit: $?\")",
+      "Bash(npm install:*)",
+      "Bash(npx tailwindcss:*)",
+      "Bash(./node_modules/.bin/tailwindcss init:*)",
+      "Bash(node_modules/.bin/tailwindcss init:*)"
+    ]
+  }
+}
