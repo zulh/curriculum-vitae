@@ -5,7 +5,7 @@ describe('cv data', () => {
   it('has required personal fields', () => {
     expect(cv.personal.name).toBe('Ahmad Zulhilmi Ghazali')
     expect(cv.personal.email).toBe('a.zulhilmi92@gmail.com')
-    expect(cv.personal.title).toBe('.NET Developer')
+    expect(cv.personal.title).toBe('Full Stack .NET Developer | Azure Certified')
   })
 
   it('has at least one experience entry with projects', () => {

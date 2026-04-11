@@ -3,7 +3,7 @@ import { useScrollReveal, staggerContainer } from '../hooks/useScrollReveal'
 import { SectionHeading } from './About'
 
 export default function Skills({ skills }) {
-  const { ref, controls } = useScrollReveal()
+  const { scrollProps } = useScrollReveal()
 
   return (
     <section id="skills" className="py-24 px-6">
@@ -11,9 +11,7 @@ export default function Skills({ skills }) {
         <SectionHeading>Computer Competencies</SectionHeading>
 
         <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
+          {...scrollProps}
           variants={staggerContainer}
           className="mt-10 space-y-5"
         >
@@ -30,10 +28,9 @@ export default function Skills({ skills }) {
                 <motion.div
                   className="h-full bg-accent rounded-full"
                   initial={{ width: 0 }}
-                  animate={controls}
-                  variants={{
-                    visible: { width: `${skill.level}%`, transition: { duration: 1, ease: 'easeOut', delay: i * 0.08 } },
-                  }}
+                  whileInView={{ width: `${skill.level}%` }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, ease: 'easeOut', delay: i * 0.08 }}
                 />
               </div>
             </motion.div>

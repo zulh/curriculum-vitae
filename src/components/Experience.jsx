@@ -3,7 +3,7 @@ import { useScrollReveal, staggerContainer, fadeUp } from '../hooks/useScrollRev
 import { SectionHeading } from './About'
 
 export default function Experience({ experience }) {
-  const { ref, controls } = useScrollReveal()
+  const { scrollProps } = useScrollReveal()
 
   return (
     <section id="experience" className="py-24 px-6 bg-surface">
@@ -11,15 +11,12 @@ export default function Experience({ experience }) {
         <SectionHeading>Industrial Exposure</SectionHeading>
 
         <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
+          {...scrollProps}
           variants={staggerContainer}
           className="mt-12 relative border-l-2 border-elevated pl-8 space-y-12"
         >
           {experience.map((job, i) => (
             <motion.div key={i} variants={fadeUp} className="relative">
-              {/* Timeline dot */}
               <span className="absolute -left-[2.85rem] top-1 w-4 h-4 rounded-full bg-accent border-4 border-primary" />
 
               <div className="flex items-start justify-between flex-wrap gap-4">

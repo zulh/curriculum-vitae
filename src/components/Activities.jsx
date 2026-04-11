@@ -3,7 +3,7 @@ import { useScrollReveal, staggerContainer, fadeUp } from '../hooks/useScrollRev
 import { SectionHeading } from './About'
 
 export default function Activities({ activities }) {
-  const { ref, controls } = useScrollReveal()
+  const { scrollProps } = useScrollReveal()
 
   return (
     <section id="activities" className="py-24 px-6">
@@ -11,9 +11,7 @@ export default function Activities({ activities }) {
         <SectionHeading>Extra Curricular Activities</SectionHeading>
 
         <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
+          {...scrollProps}
           variants={staggerContainer}
           className="mt-10 space-y-8"
         >

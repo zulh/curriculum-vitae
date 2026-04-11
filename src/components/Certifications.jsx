@@ -3,7 +3,7 @@ import { useScrollReveal, staggerContainer, fadeUp } from '../hooks/useScrollRev
 import { SectionHeading } from './About'
 
 export default function Certifications({ certifications }) {
-  const { ref, controls } = useScrollReveal()
+  const { scrollProps } = useScrollReveal()
 
   return (
     <section id="certifications" className="py-24 px-6 bg-surface">
@@ -11,9 +11,7 @@ export default function Certifications({ certifications }) {
         <SectionHeading>Certifications</SectionHeading>
 
         <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={controls}
+          {...scrollProps}
           variants={staggerContainer}
           className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
         >

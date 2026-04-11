@@ -1,6 +1,3 @@
-import { useEffect, useRef } from 'react'
-import { useAnimation, useInView } from 'framer-motion'
-
 export const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -17,14 +14,15 @@ export const staggerContainer = {
   },
 }
 
+// Returns props to spread onto a motion element for scroll-reveal
 export function useScrollReveal(threshold = 0.15) {
-  const ref = useRef(null)
-  const controls = useAnimation()
-  const inView = useInView(ref, { once: true, amount: threshold })
-
-  useEffect(() => {
-    if (inView) controls.start('visible')
-  }, [inView, controls])
-
-  return { ref, controls, fadeUp, staggerContainer }
+  return {
+    scrollProps: {
+      initial: 'hidden',
+      whileInView: 'visible',
+      viewport: { once: true, amount: threshold },
+    },
+    fadeUp,
+    staggerContainer,
+  }
 }

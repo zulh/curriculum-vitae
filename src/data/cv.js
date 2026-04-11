@@ -1,19 +1,19 @@
 export const cv = {
   personal: {
     name: 'Ahmad Zulhilmi Ghazali',
-    title: '.NET Developer',
+    title: 'Full Stack .NET Developer | Azure Certified',
     phone: '+6013-830 5184',
     email: 'a.zulhilmi92@gmail.com',
     location: 'Taman Gombak Jaya, 53100 Kuala Lumpur',
   },
 
   profile:
-    'A highly ambitious person who are keen in learning and applying various application of web development. Reliable and able to work on own initiative or as part of a team. To excel in everything he does, he is dedicated, committed and meticulous towards work. He is a fast learner and a great team player and he is able to deal with administrative work competently.',
+    'A results-driven .NET Developer with over 7 years of professional experience building and maintaining enterprise web applications. Specialises in ASP.NET, C#, and SQL with a track record of delivering reliable full-stack solutions across oil & gas and energy sectors. Holds multiple Microsoft certifications including Azure Developer Associate. A fast learner, collaborative team player, and dedicated professional who takes pride in clean, maintainable code and on-time delivery.',
 
   experience: [
     {
       company: 'Expro Group Malaysia',
-      role: 'Full Stack Developer',
+      role: 'Full Stack .NET Developer',
       period: 'April 2018 – Present',
       logo: '/logos/expro.png',
       projects: [
