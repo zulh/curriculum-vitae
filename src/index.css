@@ -8,15 +8,15 @@
   --bg-primary: #ffffff;
   --bg-surface: #f8fafc;
   --bg-elevated: #f1f5f9;
-  --bg-card: rgba(248, 250, 252, 0.8);
+  --bg-card: #ffffff;
   --text-primary: #0f172a;
   --text-muted: #64748b;
   --border-dim: #e2e8f0;
   --particle-color: #64748b;
   --particle-link: #cbd5e1;
-  --bg-dot: rgba(15, 23, 42, 0.05);
+  --bg-dot: rgba(15, 23, 42, 0.08);
   --logo-surface: #ffffff;
-  --glow-accent: rgba(56, 189, 248, 0.15);
+  --glow-accent: rgba(56, 189, 248, 0.06);
 }
 
 .dark {
@@ -32,6 +32,10 @@
   --bg-dot: rgba(255, 255, 255, 0.03);
   --logo-surface: rgba(255, 255, 255, 0.05);
   --glow-accent: rgba(56, 189, 248, 0.4);
+}
+
+.section-border-t {
+  @apply border-t border-border-dim;
 }
 
 html {

@@ -3,7 +3,7 @@ import { SectionHeading } from './About'
 
 export default function Experience({ experience }) {
   return (
-    <section id="experience" className="py-24 px-6 relative overflow-hidden bg-primary">
+    <section id="experience" className="py-24 px-6 relative overflow-hidden bg-primary section-border-t">
       {/* Background Glow */}
       <div className="absolute top-1/4 -right-24 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 -left-24 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
@@ -25,14 +25,22 @@ export default function Experience({ experience }) {
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               </span>
 
-              <div className="bg-[var(--bg-card)] backdrop-blur-md border border-border-dim p-6 md:p-8 rounded-2xl hover:border-accent/40 transition-all duration-300 shadow-xl group">
+              <div className="bg-[var(--bg-card)] backdrop-blur-md border border-border-dim p-6 md:p-8 rounded-2xl hover:border-accent/40 hover:shadow-xl transition-all duration-300 shadow-sm group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                   <div className="flex items-center gap-6">
-                    {job.logo && (
-                      <div className="w-14 h-14 bg-logo-surface rounded-xl p-2 flex items-center justify-center border border-border-dim shadow-sm">
-                        <img src={job.logo} alt={job.company} className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <div className="w-14 h-14 bg-logo-surface rounded-xl p-2 flex items-center justify-center border border-border-dim shadow-sm overflow-hidden">
+                      {job.logo ? (
+                        <img 
+                          src={job.logo} 
+                          alt={job.company} 
+                          className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
+                          onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
+                        />
+                      ) : null}
+                      <div className={`w-full h-full items-center justify-center bg-accent/5 text-accent font-bold text-xl ${job.logo ? 'hidden' : 'flex'}`}>
+                        {job.company.charAt(0)}
                       </div>
-                    )}
+                    </div>
                     <div>
                       <h3 className="text-2xl font-black text-text-primary tracking-tight">{job.company}</h3>
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1">
@@ -101,8 +109,8 @@ function formatBullet(text) {
   // For now, I'll allow HTML-like bolding if I manually added <strong> tags in cv.js (but I didn't)
   // Instead, I'll just return it and let the user manually bold if they want, 
   // OR I can do a simple regex for numbers and percentages.
-  return text.split(/(\d+%|\d+ hours|\d+ minutes|Team Lead|Technical Lead|Architected|Engineered|Spearheaded)/g).map((part, i) => 
-    /(\d+%|\d+ hours|\d+ minutes|Team Lead|Technical Lead|Architected|Engineered|Spearheaded)/.test(part) 
+  return text.split(/(\d+\.?\d*%|\d+ hours|\d+ minutes|Team Lead|Technical Lead|Architected|Engineered|Spearheaded|TNG Mini Program|TNG MP)/g).map((part, i) => 
+    /(\d+\.?\d*%|\d+ hours|\d+ minutes|Team Lead|Technical Lead|Architected|Engineered|Spearheaded|TNG Mini Program|TNG MP)/.test(part) 
       ? <strong key={i} className="text-text-primary font-bold">{part}</strong> 
       : part
   )

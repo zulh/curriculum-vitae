@@ -3,17 +3,13 @@ import { SectionHeading } from './About'
 
 export default function Activities({ activities }) {
   return (
-    <section id="activities" className="py-24 px-6 bg-surface/10 transition-colors duration-500">
-      <div className="max-w-6xl mx-auto">
+    <section id="activities" className="py-24 px-6 bg-surface section-border-t transition-colors duration-500">
+      <div className="max-w-5xl mx-auto">
         <RevealDiv>
-          <SectionHeading>Impact & Leadership</SectionHeading>
-          <p className="text-text-muted mt-4 max-w-2xl text-sm leading-relaxed mb-12">
-            Beyond the code: my contributions to organizational culture, mentorship, 
-            and community initiatives.
-          </p>
+          <SectionHeading>Activities & Contributions</SectionHeading>
         </RevealDiv>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
           {activities.map((act, i) => (
             <RevealDiv
               key={i}

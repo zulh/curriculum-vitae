@@ -3,9 +3,12 @@ import { SectionHeading } from './About'
 
 export default function Referees({ referees }) {
   return (
-    <section id="referees" className="py-24 px-6 bg-primary relative overflow-hidden transition-colors duration-500">
-      {/* Background patterns */}
-      <div className="absolute inset-0 opacity-100 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--bg-dot) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+    <section id="referees" className="py-24 px-6 relative overflow-hidden bg-primary section-border-t transition-colors duration-500">
+      {/* Visual background pattern */}
+      <div 
+        className="absolute inset-0 opacity-[0.2] transition-opacity duration-500 no-pdf"
+        style={{ backgroundImage: `radial-gradient(var(--bg-dot) 1.5px, transparent 1.5px)`, backgroundSize: '30px 30px' }}
+      />
       
       <div className="max-w-6xl mx-auto relative z-10">
         <RevealDiv>

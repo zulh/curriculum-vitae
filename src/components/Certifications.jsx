@@ -3,47 +3,45 @@ import { SectionHeading } from './About'
 
 export default function Certifications({ certifications }) {
   return (
-    <section id="certifications" className="py-24 px-6 bg-primary relative transition-colors duration-500">
+    <section id="certifications" className="py-24 px-6 relative bg-primary section-border-t transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <RevealDiv>
-          <SectionHeading>Accreditations</SectionHeading>
-          <p className="text-text-muted mt-4 max-w-2xl text-sm leading-relaxed mb-12">
-            A list of professional certifications and technical endorsements from 
-            leading industry providers.
-          </p>
+          <SectionHeading>Certifications</SectionHeading>
         </RevealDiv>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {certifications.map((cert, i) => (
-            <RevealDiv
-              key={i}
-              delay={i * 0.05}
-              className="group bg-[var(--bg-card)] backdrop-blur-sm border border-border-dim rounded-2xl p-6 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_10px_30px_-15px_var(--glow-accent)]"
-            >
-              <div className="flex justify-between items-start mb-4">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20">
-                  {cert.issuer}
-                </span>
-                <span className="text-text-muted/40 transition-colors group-hover:text-accent">
-                  <CertIcon />
-                </span>
-              </div>
-              
-              <h3 className="text-text-primary font-bold text-lg leading-snug group-hover:text-accent transition-colors duration-300">
-                {cert.name}
-              </h3>
-              
-              <div className="mt-6 flex items-end justify-between">
-                <div>
-                   <p className="text-[10px] text-text-muted font-bold uppercase tracking-wider mb-1 opacity-60">Verified Date</p>
-                   <p className="text-text-primary text-sm font-semibold">{cert.year}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+          {[...certifications]
+            .sort((a, b) => b.year - a.year)
+            .map((cert, i) => (
+            <RevealDiv key={i} delay={i * 0.1} className="h-full">
+              <div className="group relative bg-[var(--bg-card)] border border-border-dim rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-accent/30 transition-all duration-300 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-4">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent bg-accent/5 px-2 py-0.5 rounded border border-accent/10">
+                    {cert.issuer}
+                  </span>
+                  <span className="text-text-muted/40 transition-colors group-hover:text-accent">
+                    <CertIcon />
+                  </span>
                 </div>
-                {cert.credentialId && (
-                  <div className="text-right">
-                    <p className="text-[10px] text-text-muted font-bold uppercase tracking-wider mb-1 opacity-60">ID</p>
-                    <p className="text-text-muted text-[10px] font-mono tracking-tighter">{cert.credentialId}</p>
+                
+                <div className="flex-1">
+                  <h3 className="text-text-primary font-bold text-lg leading-snug group-hover:text-accent transition-colors duration-300">
+                    {cert.name}
+                  </h3>
+                </div>
+                
+                <div className="mt-8 pt-4 border-t border-border-dim/30 flex items-end justify-between">
+                  <div>
+                    <p className="text-[10px] text-text-muted font-bold uppercase tracking-wider mb-1 opacity-60">Verified Date</p>
+                    <p className="text-text-primary text-sm font-semibold">{cert.year}</p>
                   </div>
-                )}
+                  {cert.credentialId && (
+                    <div className="text-right">
+                      <p className="text-[10px] text-text-muted font-bold uppercase tracking-wider mb-1 opacity-60">ID</p>
+                      <p className="text-text-muted text-[10px] font-mono tracking-tighter">{cert.credentialId}</p>
+                    </div>
+                  )}
+                </div>
               </div>
             </RevealDiv>
           ))}

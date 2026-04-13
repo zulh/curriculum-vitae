@@ -2,7 +2,7 @@ import { RevealDiv } from '../hooks/useScrollReveal'
 
 export default function About({ profile }) {
   return (
-    <section id="about" className="py-32 px-6 relative overflow-hidden bg-surface/10 transition-colors duration-500">
+    <section id="about" className="py-32 px-6 relative overflow-hidden bg-surface transition-colors duration-500 section-border-t">
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border-dim to-transparent opacity-20" />
       
@@ -24,7 +24,7 @@ export default function About({ profile }) {
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <Badge text="7+ Years Experience" />
-                  <Badge text="Cloud Architecture" />
+                  <Badge text="Production Workflows" />
                   <Badge text="Full-Stack Engineering" />
                 </div>
               </div>

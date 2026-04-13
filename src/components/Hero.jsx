@@ -40,7 +40,13 @@ export default function Hero({ personal, theme }) {
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary transition-colors duration-500">
+    <section 
+      id="hero" 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary transition-colors duration-500"
+      style={{
+        backgroundImage: 'radial-gradient(circle at 70% 20%, var(--glow-accent), transparent 50%)'
+      }}
+    >
       {/* Particle background */}
       {engineReady && (
         <Particles
@@ -58,10 +64,13 @@ export default function Hero({ personal, theme }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-accent text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-6 opacity-90">
+          <h1 className="text-4xl md:text-6xl font-black text-text-primary mb-2 leading-tight tracking-tight">
             {personal.title}
+          </h1>
+          <p className="text-accent text-sm md:text-lg font-bold tracking-[0.1em] mb-12 opacity-90">
+            {personal.subtitle}
           </p>
-          <h1 className="text-5xl md:text-8xl font-black text-text-primary mb-8 leading-tight tracking-tight">
+          <div className="text-5xl md:text-7xl font-black text-text-primary mb-8 leading-tight tracking-tight">
             <span className="pdf-mode:hidden">
               <TypeAnimation
                 sequence={[personal.name, 1000]}
@@ -72,7 +81,7 @@ export default function Hero({ personal, theme }) {
               />
             </span>
             <span className="hidden pdf-mode:inline">{personal.name}</span>
-          </h1>
+          </div>
 
           <motion.div
             className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-text-muted text-sm"

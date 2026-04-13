@@ -1,47 +1,59 @@
 export const cv = {
   personal: {
     name: 'Ahmad Zulhilmi Ghazali',
-    title: 'Senior Software Engineer | Cloud Architect | FullStack Developer',
+    title: 'Full-Stack Software Engineer',
+    subtitle: 'Building Production Systems, Integrations & User-Facing Workflows',
     phone: '+6013-830 5184',
     email: 'a.zulhilmi92@gmail.com',
     location: 'Kuala Lumpur, Malaysia',
-    linkedin: 'linkedin.com/in/zulhilmi-ghazali', // Added for professionalism
+    linkedin: 'linkedin.com/in/zulhilmi-ghazali',
   },
 
   profile:
-    'Strategic-thinking Senior Software Engineer with 7+ years of experience in architecting and maintaining high-scale enterprise applications. Expert in cloud-native solutions (Azure, GCP, AWS) and full-stack development. Proven success in leading cross-functional teams to deliver mission-critical systems in the aviation and energy sectors, with a relentless focus on performance, scalability, and operational excellence.',
+    'Full-Stack Software Engineer with over 7 years of experience in delivering scalable production systems across the aviation, energy, and insurtech sectors. Experienced in building and maintaining production systems involving integrations, workflows, and automation across real-world business use cases. Proven track record in developing secure payment pipelines, high-availability middleware, and complex data-driven calculation engines.',
 
   experience: [
     {
+      company: 'Senang',
+      role: 'Motor Team Lead',
+      period: '2024 – Present',
+      client: 'Insurtech Platform',
+      logo: 'logos/senang.png',
+      projects: [
+        {
+          title: 'Digital Insurance Ecosystem & TNG Mini Program',
+          description:
+            'Leading the engineering efforts for automated insurance quotation, purchase, and issuance flows across major digital platforms.',
+          bullets: [
+            'Developed and maintained insurance quotation, purchase, and policy issuance flows within the TNG Mini Program (TNG MP) platform.',
+            'Integrated third-party insurer/provider APIs to support real-time pricing, validation, and policy issuance.',
+            'Implemented payment flows supporting FPX and card transactions, including callback handling and status reconciliation.',
+            'Built background jobs for reporting, retries, and asynchronous processing of policy-related workflows.',
+            'Improved reliability of issuance and payment flows through enhanced error handling and retry mechanisms.',
+            'Worked across frontend, backend, and database layers to deliver end-to-end features for production systems.',
+          ],
+          tech: 'Node.js, Firebase, React.js, TNG MP Integration',
+        },
+      ],
+    },
+    {
       company: 'AirAsia',
-      role: 'Senior Software Engineer (Full Stack)',
-      period: 'Sept 2022 – Present',
+      role: 'Senior Software Engineer',
+      period: 'Sept 2022 – Dec 2023',
       client: 'Airlines Operations & Procurement',
       logo: 'logos/airasia.png',
       projects: [
         {
-          title: 'AirAsia Aviation Fuel Sourcing (AFS)',
+          title: 'Aviation Fuel Sourcing (AFS) & Centralised Engine (ACE)',
           description:
-            'A high-performance pricing engine that forecasts fuel costs by processing real-time market data (FX, MOPS) and complex supplier contracts, enabling multi-million dollar procurement optimizations.',
+            'Critical fleet operations and global booking systems handling procurement and high-volume transaction traffic.',
           bullets: [
-            'Technical Lead for a cross-functional team of 7 (5 developers, 2 QAs), orchestrating end-to-end delivery of the AFS platform.',
-            'Architected the integration of high-frequency financial data feeds (FX and MOPS) into the GCP-based calculation engine.',
-            'Bridged technical requirements with business stakeholders to ensure a 100% alignment on procurement cost-saving objectives.',
-            'Implemented robust monitoring and alerting for pricing anomalies, ensuring data integrity for financial decision-making.',
+            'Lead the development of the AirAsia Aviation Fuel Sourcing (AFS) platform, optimizing multi-million dollar procurement costs.',
+            'Integrated high-frequency financial data feeds (FX and MOPS) into a GCP-based calculation engine for real-time fuel forecasting.',
+            'Maintained 99.9% uptime for the ACE middleware managing global booking and fare services for Online Travel Agents (OTA).',
+            'Modernized legacy middleware components to .NET Core, reducing processing latency for global OTA requests.',
           ],
-          tech: 'GCP (Cloud Run, Firestore, KMS), Node.js, React.js, GitLab CI/CD',
-        },
-        {
-          title: 'AirAsia Centralised Engine (ACE)',
-          description:
-            'Critical middleware managing global booking and fare services for Online Travel Agents (OTA), serving as the high-availability gateway to core databases.',
-          bullets: [
-            'Directed system upgrades and performance tuning for ACE, maintaining 99.9% uptime for high-volume booking traffic.',
-            'Spearheaded the legacy modernization of middleware components to .NET Core, significantly reducing latency.',
-            'Managed complex system patches and bug fixes in a zero-downtime environment.',
-            'Served as the primary technical interface for OTA partners to resolve critical integration issues.',
-          ],
-          tech: 'GCP (App Engine, BigQuery), .NET Core, SOAP/REST APIs',
+          tech: 'GCP (Cloud Run, BigQuery), .NET Core, Node.js, React.js',
         },
       ],
     },
@@ -55,64 +67,54 @@ export const cv = {
         {
           title: 'myTNBiz Enterprise Portal',
           description:
-            'Flagship B2B billing and account management portal for Malaysia\'s primary utility provider, handling high-volume payments and account visibility.',
+            'Enterprise B2B billing and account management portal for Malaysia\'s primary utility provider.',
           bullets: [
-            'Engineered secure FPX payment integrations, coordinating directly with banking partners and the TNB internal finance teams.',
-            'Architected automated CI/CD pipelines on AWS to streamline deployment cycles from weeks to days.',
-            'Led the development of EFT and Cheque batch processing systems using AWS Lambda and Batch.',
-            'Produced comprehensive technical documentation to ensure long-term specialized support for TNB operations.',
+            'Implemented secure FPX payment integrations for the myTNBiz B2B portal, handling high-volume utility billing.',
+            'Established automated CI/CD pipelines on AWS to accelerate deployment cycles for enterprise energy systems.',
+            'Developed EFT and Cheque batch processing systems using AWS Lambda and Batch for financial operations.',
+            'Authored technical documentation to support specialized long-term maintenance of billing infrastructures.',
           ],
-          tech: 'AWS (ECS, Lambda, Batch), .NET Core, MSSQL, SQS/SNS',
+          tech: 'AWS (ECS, Lambda, Batch), .NET Core, MSSQL',
         },
       ],
     },
     {
       company: 'Expro Group Malaysia',
-      role: 'Lead Developer (Full Stack)', // Slightly refined title for senior impact
+      role: 'Full-Stack Developer',
       period: 'Apr 2018 – Aug 2021',
-      client: 'Apache Corp., Tullow Oil, TAQA, ConocoPhillips',
+      client: 'Energy Sector (Apache, TAQA, ConocoPhillips)',
       logo: 'logos/expro.svg',
       projects: [
         {
-          title: 'SafeWells Web Integrity Suite',
+          title: 'SafeWells Web & Offline Suite',
           description:
-            'A global well-integrity management platform providing real-time visibility into well pressure, compliance, and maintenance schedules for major oil producers.',
+            'A global well-integrity management platform for real-time visibility and offshore data synchronization.',
           bullets: [
-            'Modernized legacy .NET Web Forms architectures, resulting in a 40% improvement in data query performance.',
-            'Designed and implemented complex SQL stored procedures to handle massive datasets from offshore well tests.',
-            'Collaborated with global UX teams to redesign the dashboard interface, improving field engineer reporting efficiency.',
+            'Modernized legacy .NET architectures for the SafeWells suite, improving data query performance by 40% for global producers.',
+            'Developed a field-ready offline synchronization system using ASP.NET Blazor to ensure data integrity in offshore environments.',
+            'Built complex SQL stored procedures to process and validate massive offshore dataset submissions.',
+            'Collaborated with global teams to refine reporting dashboards for field engineers.',
           ],
-          tech: 'Azure DevOps, .NET, MSSQL, SSMS, IIS',
-        },
-        {
-          title: 'SafeWells Offline Deployment Manager',
-          description:
-            'A field-ready offline synchronization system built on ASP.NET Blazor to enable data recording in connectivity-challenged offshore environments.',
-          bullets: [
-            'Engineered a robust offline-to-online synchronization protocol ensuring 0% data loss during high-latency syncs.',
-            'Rapidly prototyped and deployed the Blazor-based UI for cross-platform tablet usage.',
-            'Optimized local database storage schemas for field tablets to ensure responsive performance.',
-          ],
-          tech: 'ASP.NET Blazor, Azure DevOps, LocalDB',
+          tech: 'Azure DevOps, .NET Core, Blazor, MSSQL',
         },
       ],
     },
     {
       company: 'PETRONAS ICT',
-      role: 'Software Engineering Resident (Intern)',
+      role: 'Software Engineering Intern',
       period: 'May 2016 – Dec 2016',
       client: 'Group Treasury Department',
       logo: 'logos/petronas.svg',
       projects: [
         {
           title: 'IFSSC Payment Advice Automation',
-          description: 'A transformative automation tool developed for PETRONAS Group Treasury to streamline financial advisory workflows.',
+          description: 'Automation tool to streamline PETRONAS Group Treasury financial advisory workflows.',
           bullets: [
-            'Designed a custom sorting algorithm that reduced manual payment advice processing from 4 hours to 5 minutes (98% efficiency gain).',
-            'Developed a secure search and retrieval portal for Operating Units (OPU) to access financial records.',
-            'Implemented a granular Access Control List (ACL) system to protect sensitive treasury data.',
+            'Developed a custom sorting algorithm that reduced manual payment advice processing from 4 hours to 5 minutes.',
+            'Built a secure search and retrieval portal for Group Treasury financial records.',
+            'Implemented Access Control Lists (ACL) to protect sensitive financial data.',
           ],
-          tech: 'PHP, MySQL, XAMPP',
+          tech: 'PHP, MySQL',
         },
       ],
     },
@@ -121,39 +123,44 @@ export const cv = {
   skills: {
     categories: [
       {
-        title: 'Backend & Architecture',
+        title: 'Languages',
         skills: [
-          { name: 'C# / .NET Core / Web API', level: 92 },
-          { name: 'MS SQL / Stored Procedures', level: 88 },
-          { name: 'Node.js / Express', level: 84 },
-          { name: 'REST & SOAP API Design', level: 86 },
+          { name: 'JavaScript (ES6+) / TypeScript', level: 90 },
+          { name: 'C# / .NET', level: 92 },
+          { name: 'SQL / T-SQL', level: 88 },
+          { name: 'Node.js', level: 85 },
         ],
       },
       {
-        title: 'Cloud & Infrastructure',
+        title: 'Frontend',
         skills: [
-          { name: 'Microsoft Azure (Certified)', level: 82 },
-          { name: 'Google Cloud (GCP)', level: 78 },
-          { name: 'Amazon Web Services (AWS)', level: 74 },
-          { name: 'Docker / Cloud Run / ECS', level: 70 },
-        ],
-      },
-      {
-        title: 'Frontend & UI Core',
-        skills: [
-          { name: 'React.js / Next.js', level: 84 },
-          { name: 'JavaScript (ES6+) / TypeScript', level: 85 },
-          { name: 'Tailwind CSS / CSS3 / HTML5', level: 82 },
+          { name: 'React.js / Next.js', level: 86 },
+          { name: 'Tailwind CSS / HTML5 / CSS3', level: 88 },
           { name: 'ASP.NET Blazor', level: 75 },
         ],
       },
       {
-        title: 'DevOps & Professional Tools',
+        title: 'Backend',
         skills: [
-          { name: 'Azure DevOps / GitLab CI/CD', level: 76 },
-          { name: 'Git / GitHub / bitbucket', level: 90 },
-          { name: 'Postman / SoapUI / Swagger', level: 88 },
-          { name: 'Agile / SCRUM / Jira', level: 85 },
+          { name: '.NET Core / Web API', level: 94 },
+          { name: 'REST & SOAP API Design', level: 88 },
+          { name: 'Authentication & Security', level: 82 },
+        ],
+      },
+      {
+        title: 'Databases',
+        skills: [
+          { name: 'MS SQL Server', level: 90 },
+          { name: 'Firestore / NoSQL', level: 78 },
+          { name: 'PostgreSQL', level: 75 },
+        ],
+      },
+      {
+        title: 'Tools & DevOps',
+        skills: [
+          { name: 'Azure / GCP / AWS', level: 82 },
+          { name: 'Azure DevOps / GitLab CI', level: 78 },
+          { name: 'Git / Docker / Postman', level: 90 },
         ],
       },
     ],

@@ -3,17 +3,13 @@ import { SectionHeading } from './About'
 
 export default function Projects({ projects }) {
   return (
-    <section id="projects" className="py-24 px-6 bg-primary transition-colors duration-500">
+    <section id="projects" className="py-24 px-6 relative bg-primary section-border-t transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <RevealDiv>
-          <SectionHeading>Technical Showcases</SectionHeading>
-          <p className="text-text-muted mt-4 max-w-2xl text-sm leading-relaxed mb-12">
-            Selected academic and independent projects that demonstrate foundational 
-            engineering principles and product-thinking.
-          </p>
+          <SectionHeading>Notable Work</SectionHeading>
         </RevealDiv>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {projects.map((proj, i) => (
             <RevealDiv
               key={i}
