@@ -3,7 +3,7 @@ import { SectionHeading } from './About'
 
 export default function Education({ education }) {
   return (
-    <section id="education" className="py-24 px-6 bg-primary">
+    <section id="education" className="py-24 px-6 bg-surface/10 transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <RevealDiv>
           <SectionHeading>Academic Foundation</SectionHeading>
@@ -14,7 +14,7 @@ export default function Education({ education }) {
             <RevealDiv
               key={i}
               delay={i * 0.1}
-              className="group bg-surface/20 border border-elevated/40 rounded-3xl p-8 hover:bg-surface/40 transition-all duration-500 hover:border-accent/30"
+              className="group bg-[var(--bg-card)] backdrop-blur-sm border border-border-dim rounded-3xl p-8 hover:bg-surface/40 transition-all duration-500 hover:border-accent/30 shadow-lg"
             >
               <div className="flex flex-col h-full">
                 <div className="flex justify-between items-start mb-6">
@@ -36,7 +36,7 @@ export default function Education({ education }) {
                   </p>
                 )}
                 
-                <div className="mt-auto pt-6 border-t border-elevated/30 flex items-center justify-between">
+                <div className="mt-auto pt-6 border-t border-border-dim flex items-center justify-between">
                   {edu.result && (
                     <span className="flex items-center gap-2">
                        <span className="w-1.5 h-1.5 rounded-full bg-accent" />

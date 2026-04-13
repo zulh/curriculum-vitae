@@ -3,7 +3,7 @@ import { SectionHeading } from './About'
 
 export default function Projects({ projects }) {
   return (
-    <section id="projects" className="py-24 px-6 bg-surface/30">
+    <section id="projects" className="py-24 px-6 bg-primary transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <RevealDiv>
           <SectionHeading>Technical Showcases</SectionHeading>
@@ -18,9 +18,9 @@ export default function Projects({ projects }) {
             <RevealDiv
               key={i}
               delay={i * 0.1}
-              className="relative group bg-primary/40 backdrop-blur-sm border border-elevated/40 rounded-3xl p-8 hover:border-accent/50 transition-all duration-500 overflow-hidden"
+              className="relative group bg-[var(--bg-card)] backdrop-blur-sm border border-border-dim rounded-3xl p-8 hover:border-accent/50 transition-all duration-500 overflow-hidden"
             >
-              <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
+              <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity">
                 <ProjBgIcon />
               </div>
 

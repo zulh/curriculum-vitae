@@ -3,9 +3,9 @@ import { SectionHeading } from './About'
 
 export default function Referees({ referees }) {
   return (
-    <section id="referees" className="py-24 px-6 bg-primary relative overflow-hidden">
+    <section id="referees" className="py-24 px-6 bg-primary relative overflow-hidden transition-colors duration-500">
       {/* Background patterns */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      <div className="absolute inset-0 opacity-100 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--bg-dot) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
       
       <div className="max-w-6xl mx-auto relative z-10">
         <RevealDiv>
@@ -21,7 +21,7 @@ export default function Referees({ referees }) {
             <RevealDiv
               key={i}
               delay={i * 0.1}
-              className="group bg-surface/30 backdrop-blur-xl border border-elevated/40 rounded-[2rem] p-8 md:p-10 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl"
+              className="group bg-[var(--bg-card)] backdrop-blur-xl border border-border-dim rounded-[2rem] p-8 md:p-10 hover:border-accent/40 transition-all duration-500 hover:shadow-2xl"
             >
               <div className="flex flex-col h-full">
                 <div className="mb-8">

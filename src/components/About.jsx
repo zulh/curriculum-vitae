@@ -2,9 +2,9 @@ import { RevealDiv } from '../hooks/useScrollReveal'
 
 export default function About({ profile }) {
   return (
-    <section id="about" className="py-32 px-6 relative overflow-hidden bg-primary">
+    <section id="about" className="py-32 px-6 relative overflow-hidden bg-surface/10 transition-colors duration-500">
       {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-elevated to-transparent opacity-20" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border-dim to-transparent opacity-20" />
       
       <div className="max-w-4xl mx-auto relative z-10">
         <RevealDiv>
@@ -58,7 +58,7 @@ export function SectionHeading({ children }) {
       <h2 className="text-3xl md:text-4xl font-black text-text-primary tracking-tighter uppercase">
         {children}
       </h2>
-      <div className="absolute -bottom-2 left-0 w-1/3 h-1 bg-accent rounded-full transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_rgba(56,189,248,0.5)]" />
+      <div className="absolute -bottom-2 left-0 w-1/3 h-1 bg-accent rounded-full transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_var(--glow-accent)]" />
     </div>
   )
 }

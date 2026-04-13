@@ -3,7 +3,7 @@ import { SectionHeading } from './About'
 
 export default function Activities({ activities }) {
   return (
-    <section id="activities" className="py-24 px-6 bg-surface/30">
+    <section id="activities" className="py-24 px-6 bg-surface/10 transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <RevealDiv>
           <SectionHeading>Impact & Leadership</SectionHeading>
@@ -18,7 +18,7 @@ export default function Activities({ activities }) {
             <RevealDiv
               key={i}
               delay={i * 0.1}
-              className="bg-primary/40 backdrop-blur-md border border-elevated/40 rounded-3xl p-8 hover:border-accent/40 transition-all duration-300"
+              className="bg-[var(--bg-card)] backdrop-blur-md border border-border-dim rounded-3xl p-8 hover:border-accent/40 transition-all duration-300"
             >
               <h3 className="text-lg font-black text-accent uppercase tracking-[0.15em] mb-6 flex items-center gap-3">
                 <span className="w-8 h-px bg-accent/30" />

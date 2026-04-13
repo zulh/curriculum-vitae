@@ -3,7 +3,7 @@ import { SectionHeading } from './About'
 
 export default function Certifications({ certifications }) {
   return (
-    <section id="certifications" className="py-24 px-6 bg-surface/30 relative">
+    <section id="certifications" className="py-24 px-6 bg-primary relative transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <RevealDiv>
           <SectionHeading>Accreditations</SectionHeading>
@@ -18,7 +18,7 @@ export default function Certifications({ certifications }) {
             <RevealDiv
               key={i}
               delay={i * 0.05}
-              className="group bg-primary/40 backdrop-blur-sm border border-elevated/50 rounded-2xl p-6 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_10px_30px_-15px_rgba(56,189,248,0.2)]"
+              className="group bg-[var(--bg-card)] backdrop-blur-sm border border-border-dim rounded-2xl p-6 hover:border-accent/50 transition-all duration-300 hover:shadow-[0_10px_30px_-15px_var(--glow-accent)]"
             >
               <div className="flex justify-between items-start mb-4">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent bg-accent/10 px-2 py-0.5 rounded border border-accent/20">

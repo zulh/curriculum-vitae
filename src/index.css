@@ -4,12 +4,42 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-primary: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-elevated: #f1f5f9;
+  --bg-card: rgba(248, 250, 252, 0.8);
+  --text-primary: #0f172a;
+  --text-muted: #64748b;
+  --border-dim: #e2e8f0;
+  --particle-color: #64748b;
+  --particle-link: #cbd5e1;
+  --bg-dot: rgba(15, 23, 42, 0.05);
+  --logo-surface: #ffffff;
+  --glow-accent: rgba(56, 189, 248, 0.15);
+}
+
+.dark {
+  --bg-primary: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-elevated: #334155;
+  --bg-card: rgba(30, 41, 59, 0.5);
+  --text-primary: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-dim: #1e293b;
+  --particle-color: #38bdf8;
+  --particle-link: rgba(56, 189, 248, 0.2);
+  --bg-dot: rgba(255, 255, 255, 0.03);
+  --logo-surface: rgba(255, 255, 255, 0.05);
+  --glow-accent: rgba(56, 189, 248, 0.4);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-primary text-text-primary;
+  @apply bg-primary text-text-primary transition-colors duration-300;
 }
 
 /* Base PDF handling */

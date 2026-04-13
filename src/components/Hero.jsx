@@ -3,11 +3,9 @@ import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
-import { usePDF } from '../hooks/usePDF'
 
-export default function Hero({ personal }) {
+export default function Hero({ personal, theme }) {
   const [engineReady, setEngineReady] = useState(false)
-  const { generatePDF, isGenerating } = usePDF()
 
   useEffect(() => {
     initParticlesEngine(async engine => {
@@ -17,34 +15,39 @@ export default function Hero({ personal }) {
     })
   }, [])
 
-  const handleDownload = (e) => {
-    e.preventDefault()
-    generatePDF('cv-content', `${personal.name.replace(/\s+/g, '_')}_CV.pdf`)
+  // Dynamic particle configuration based on theme
+  const particleOptions = {
+    background: { color: { value: 'transparent' } },
+    fpsLimit: 60,
+    interactivity: {
+      events: { onHover: { enable: true, mode: 'grab' } },
+      modes: { grab: { distance: 140, links: { opacity: 0.5 } } },
+    },
+    particles: {
+      color: { value: getComputedStyle(document.documentElement).getPropertyValue('--particle-color').trim() || (theme === 'dark' ? '#38bdf8' : '#64748b') },
+      links: { 
+        color: getComputedStyle(document.documentElement).getPropertyValue('--particle-link').trim() || (theme === 'dark' ? '#38bdf8' : '#cbd5e1'), 
+        distance: 150, 
+        enable: true, 
+        opacity: theme === 'dark' ? 0.2 : 0.1, 
+        width: 1 
+      },
+      move: { enable: true, speed: 0.6 },
+      number: { density: { enable: true }, value: 80 },
+      opacity: { value: theme === 'dark' ? 0.3 : 0.2 },
+      size: { value: { min: 1, max: 2 } },
+    },
   }
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-primary transition-colors duration-500">
       {/* Particle background */}
       {engineReady && (
         <Particles
+          key={theme} // Force re-render on theme change
           id="tsparticles"
           className="absolute inset-0"
-          options={{
-            background: { color: { value: '#0f172a' } },
-            fpsLimit: 60,
-            interactivity: {
-              events: { onHover: { enable: true, mode: 'repulse' } },
-              modes: { repulse: { distance: 100 } },
-            },
-            particles: {
-              color: { value: '#38bdf8' },
-              links: { color: '#38bdf8', distance: 150, enable: true, opacity: 0.2, width: 1 },
-              move: { enable: true, speed: 1 },
-              number: { density: { enable: true }, value: 60 },
-              opacity: { value: 0.3 },
-              size: { value: { min: 1, max: 3 } },
-            },
-          }}
+          options={particleOptions}
         />
       )}
 
@@ -87,20 +90,16 @@ export default function Hero({ personal }) {
             className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 no-pdf"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5, duration: 0.6 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
           >
-            <button 
-              onClick={handleDownload}
-              disabled={isGenerating}
-              className="px-8 py-3 bg-accent text-primary font-bold rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px]"
-            >
-              {isGenerating ? 'Generating PDF...' : 'Download CV'}
-            </button>
             <a 
-              href="#experience" 
-              className="px-8 py-3 border border-elevated text-text-primary font-bold rounded-full hover:bg-elevated transition-all duration-300 hover:scale-105 active:scale-95"
+              href="#experience"
+              className="group relative px-8 py-4 bg-accent text-slate-900 rounded-full font-black uppercase tracking-widest text-xs overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:shadow-[0_0_30px_rgba(56,189,248,0.5)]"
             >
-              View Experience
+              <span className="relative z-10 flex items-center gap-2">
+                View Journey
+                <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </span>
             </a>
           </motion.div>
         </motion.div>
@@ -116,6 +115,14 @@ export default function Hero({ personal }) {
         </motion.div>
       </div>
     </section>
+  )
+}
+
+function ArrowRightIcon({ className }) {
+  return (
+    <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+    </svg>
   )
 }
 

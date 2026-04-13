@@ -37,7 +37,7 @@ function SkillBar({ skill, index }) {
 
 export default function Skills({ skills }) {
   return (
-    <section id="skills" className="py-24 px-6 bg-primary/40">
+    <section id="skills" className="py-24 px-6 bg-surface/10 transition-colors duration-500">
       <div className="max-w-6xl mx-auto">
         <RevealDiv>
           <SectionHeading>Technical Expertise</SectionHeading>

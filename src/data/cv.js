@@ -17,7 +17,7 @@ export const cv = {
       role: 'Senior Software Engineer (Full Stack)',
       period: 'Sept 2022 – Present',
       client: 'Airlines Operations & Procurement',
-      logo: '/logos/airasia.png',
+      logo: 'logos/airasia.png',
       projects: [
         {
           title: 'AirAsia Aviation Fuel Sourcing (AFS)',
@@ -50,7 +50,7 @@ export const cv = {
       role: 'Senior Analyst (Full Stack)',
       period: 'Sept 2021 – Aug 2022',
       client: 'Tenaga Nasional Berhad (TNB)',
-      logo: '/logos/avanade.png',
+      logo: 'logos/avanade.png',
       projects: [
         {
           title: 'myTNBiz Enterprise Portal',
@@ -71,7 +71,7 @@ export const cv = {
       role: 'Lead Developer (Full Stack)', // Slightly refined title for senior impact
       period: 'Apr 2018 – Aug 2021',
       client: 'Apache Corp., Tullow Oil, TAQA, ConocoPhillips',
-      logo: '/logos/expro.png',
+      logo: 'logos/expro.svg',
       projects: [
         {
           title: 'SafeWells Web Integrity Suite',
@@ -102,7 +102,7 @@ export const cv = {
       role: 'Software Engineering Resident (Intern)',
       period: 'May 2016 – Dec 2016',
       client: 'Group Treasury Department',
-      logo: '/logos/petronas.png',
+      logo: 'logos/petronas.svg',
       projects: [
         {
           title: 'IFSSC Payment Advice Automation',

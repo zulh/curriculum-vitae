@@ -21,15 +21,15 @@ export default function Experience({ experience }) {
           {experience.map((job, i) => (
             <RevealDiv key={i} delay={i * 0.15} className="relative">
               {/* Timeline Dot */}
-              <span className="absolute -left-[2.55rem] md:-left-[3.55rem] top-1 w-6 h-6 rounded-full bg-primary border-2 border-accent flex items-center justify-center shadow-[0_0_15px_rgba(56,189,248,0.4)]">
+              <span className="absolute -left-[2.55rem] md:-left-[3.55rem] top-1 w-6 h-6 rounded-full bg-primary border-2 border-accent flex items-center justify-center shadow-[0_0_15px_var(--glow-accent)]">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               </span>
 
-              <div className="bg-surface/30 backdrop-blur-md border border-elevated/50 p-6 md:p-8 rounded-2xl hover:border-accent/40 transition-all duration-300 shadow-xl group">
+              <div className="bg-[var(--bg-card)] backdrop-blur-md border border-border-dim p-6 md:p-8 rounded-2xl hover:border-accent/40 transition-all duration-300 shadow-xl group">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
                   <div className="flex items-center gap-6">
                     {job.logo && (
-                      <div className="w-14 h-14 bg-white/5 rounded-xl p-2 flex items-center justify-center border border-elevated/30">
+                      <div className="w-14 h-14 bg-logo-surface rounded-xl p-2 flex items-center justify-center border border-border-dim shadow-sm">
                         <img src={job.logo} alt={job.company} className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500" />
                       </div>
                     )}

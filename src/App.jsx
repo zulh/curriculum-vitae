@@ -10,6 +10,7 @@ import Projects from './components/Projects'
 import Activities from './components/Activities'
 import Referees from './components/Referees'
 import PrintLayout from './components/PrintLayout'
+import { useTheme } from './hooks/useTheme'
 
 const NAV_SECTIONS = [
   'About', 'Experience', 'Skills', 'Certifications',
@@ -17,11 +18,13 @@ const NAV_SECTIONS = [
 ]
 
 export default function App() {
+  const { theme, toggleTheme, mounted } = useTheme()
+
   return (
-    <>
-    <div id="cv-content">
-      <Navbar name={cv.personal.name} sections={NAV_SECTIONS} />
-      <Hero personal={cv.personal} />
+    <div className={mounted ? theme : ''}>
+      <div id="cv-content" className="bg-primary min-h-screen">
+        <Navbar name={cv.personal.name} sections={NAV_SECTIONS} theme={theme} toggleTheme={toggleTheme} mounted={mounted} />
+      <Hero personal={cv.personal} theme={theme} />
       <About profile={cv.profile} />
       <Experience experience={cv.experience} />
       <Skills skills={cv.skills} />
@@ -33,7 +36,7 @@ export default function App() {
       
       {/* Hidden layout specifically for high-fidelity PDF generation */}
       <PrintLayout cv={cv} />
+      </div>
     </div>
-    </>
   )
 }
