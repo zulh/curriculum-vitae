@@ -4,7 +4,7 @@ import html2pdf from 'html2pdf.js'
 export const usePDF = () => {
   const [isGenerating, setIsGenerating] = useState(false)
 
-  const generatePDF = async (elementId, filename = 'Curriculum_Vitae.pdf') => {
+  const downloadPDF = async (filename = 'Curriculum_Vitae.pdf', elementId = 'cv-content') => {
     const element = document.getElementById(elementId)
     if (!element) return
 
@@ -42,5 +42,5 @@ export const usePDF = () => {
     }
   }
 
-  return { generatePDF, isGenerating }
+  return { downloadPDF, isGenerating }
 }
