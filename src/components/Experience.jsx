@@ -21,7 +21,7 @@ export default function Experience({ experience }) {
           {experience.map((job, i) => (
             <RevealDiv key={i} delay={i * 0.15} className="relative">
               {/* Timeline Dot */}
-              <span className="absolute -left-[2.55rem] md:-left-[3.55rem] top-1 w-6 h-6 rounded-full bg-primary border-2 border-accent flex items-center justify-center shadow-[0_0_15px_var(--glow-accent)]">
+              <span className="absolute -left-[2.75rem] md:-left-[3.75rem] top-1 w-6 h-6 rounded-full bg-primary border-2 border-accent flex items-center justify-center shadow-[0_0_15px_var(--glow-accent)]">
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               </span>
 
