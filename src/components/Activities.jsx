@@ -1,26 +1,38 @@
-import { motion } from 'framer-motion'
-import { revealProps } from '../hooks/useScrollReveal'
+import { RevealDiv } from '../hooks/useScrollReveal'
 import { SectionHeading } from './About'
 
 export default function Activities({ activities }) {
   return (
-    <section id="activities" className="py-24 px-6">
-      <div className="max-w-4xl mx-auto">
-        <SectionHeading>Extra Curricular Activities</SectionHeading>
+    <section id="activities" className="py-24 px-6 bg-surface/30">
+      <div className="max-w-6xl mx-auto">
+        <RevealDiv>
+          <SectionHeading>Impact & Leadership</SectionHeading>
+          <p className="text-text-muted mt-4 max-w-2xl text-sm leading-relaxed mb-12">
+            Beyond the code: my contributions to organizational culture, mentorship, 
+            and community initiatives.
+          </p>
+        </RevealDiv>
 
-        <div className="mt-10 space-y-8">
-          {activities.map((entry, i) => (
-            <motion.div key={i} {...revealProps(i * 0.1)}>
-              <h3 className="text-accent font-bold text-lg">{entry.year}</h3>
-              <ul className="mt-3 space-y-2">
-                {entry.items.map((item, j) => (
-                  <li key={j} className="text-text-muted text-sm flex gap-2">
-                    <span className="text-accent mt-1 flex-shrink-0">›</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {activities.map((act, i) => (
+            <RevealDiv
+              key={i}
+              delay={i * 0.1}
+              className="bg-primary/40 backdrop-blur-md border border-elevated/40 rounded-3xl p-8 hover:border-accent/40 transition-all duration-300"
+            >
+              <h3 className="text-lg font-black text-accent uppercase tracking-[0.15em] mb-6 flex items-center gap-3">
+                <span className="w-8 h-px bg-accent/30" />
+                {act.year}
+              </h3>
+              <ul className="space-y-4">
+                {act.items.map((item, j) => (
+                  <li key={j} className="text-text-primary/80 text-sm leading-relaxed flex gap-3 group">
+                    <span className="text-accent opacity-50 group-hover:opacity-100 transition-opacity mt-1.5">•</span>
                     {item}
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </RevealDiv>
           ))}
         </div>
       </div>

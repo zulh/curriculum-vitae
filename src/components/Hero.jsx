@@ -3,9 +3,11 @@ import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import Particles, { initParticlesEngine } from '@tsparticles/react'
 import { loadSlim } from '@tsparticles/slim'
+import { usePDF } from '../hooks/usePDF'
 
 export default function Hero({ personal }) {
   const [engineReady, setEngineReady] = useState(false)
+  const { generatePDF, isGenerating } = usePDF()
 
   useEffect(() => {
     initParticlesEngine(async engine => {
@@ -14,6 +16,11 @@ export default function Hero({ personal }) {
       setEngineReady(true)
     })
   }, [])
+
+  const handleDownload = (e) => {
+    e.preventDefault()
+    generatePDF('cv-content', `${personal.name.replace(/\s+/g, '_')}_CV.pdf`)
+  }
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -42,43 +49,66 @@ export default function Hero({ personal }) {
       )}
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6">
+      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <p className="text-accent text-sm font-semibold tracking-widest uppercase mb-4">
+          <p className="text-accent text-xs md:text-sm font-bold tracking-[0.3em] uppercase mb-6 opacity-90">
             {personal.title}
           </p>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-text-primary mb-6 leading-tight">
-            <TypeAnimation
-              sequence={[personal.name, 1000]}
-              wrapper="span"
-              speed={50}
-              repeat={0}
-              cursor={true}
-            />
+          <h1 className="text-5xl md:text-8xl font-black text-text-primary mb-8 leading-tight tracking-tight">
+            <span className="pdf-mode:hidden">
+              <TypeAnimation
+                sequence={[personal.name, 1000]}
+                wrapper="span"
+                speed={50}
+                repeat={0}
+                cursor={true}
+              />
+            </span>
+            <span className="hidden pdf-mode:inline">{personal.name}</span>
           </h1>
 
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 text-text-muted text-sm mt-8"
+            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-text-muted text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+          >
+            <ContactItem icon={<PhoneIcon />} text={personal.phone} />
+            <ContactItem icon={<MailIcon />} text={personal.email} />
+            <ContactItem icon={<LocIcon />} text={personal.location} />
+          </motion.div>
+
+          {/* CTA Buttons */}
+          <motion.div 
+            className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 no-pdf"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.5, duration: 0.6 }}
           >
-            <span>{personal.phone}</span>
-            <span className="hidden sm:block text-elevated">|</span>
-            <span>{personal.email}</span>
-            <span className="hidden sm:block text-elevated">|</span>
-            <span>{personal.location}</span>
+            <button 
+              onClick={handleDownload}
+              disabled={isGenerating}
+              className="px-8 py-3 bg-accent text-primary font-bold rounded-full hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(56,189,248,0.3)] hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px]"
+            >
+              {isGenerating ? 'Generating PDF...' : 'Download CV'}
+            </button>
+            <a 
+              href="#experience" 
+              className="px-8 py-3 border border-elevated text-text-primary font-bold rounded-full hover:bg-elevated transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              View Experience
+            </a>
           </motion.div>
         </motion.div>
 
         <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="absolute left-1/2 -translate-x-1/2 bottom-12 no-pdf"
+          animate={{ y: [0, 10, 0], opacity: [0.4, 1, 0.4] }}
+          transition={{ repeat: Infinity, duration: 2 }}
         >
           <svg className="w-6 h-6 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -88,3 +118,23 @@ export default function Hero({ personal }) {
     </section>
   )
 }
+
+function ContactItem({ icon, text }) {
+  return (
+    <div className="flex items-center gap-2 hover:text-accent transition-colors duration-200">
+      <span className="text-accent/80">{icon}</span>
+      <span>{text}</span>
+    </div>
+  )
+}
+
+// Icons
+const PhoneIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+)
+const MailIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+)
+const LocIcon = () => (
+  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+)

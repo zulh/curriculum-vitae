@@ -9,6 +9,7 @@ import Education from './components/Education'
 import Projects from './components/Projects'
 import Activities from './components/Activities'
 import Referees from './components/Referees'
+import PrintLayout from './components/PrintLayout'
 
 const NAV_SECTIONS = [
   'About', 'Experience', 'Skills', 'Certifications',
@@ -18,6 +19,7 @@ const NAV_SECTIONS = [
 export default function App() {
   return (
     <>
+    <div id="cv-content">
       <Navbar name={cv.personal.name} sections={NAV_SECTIONS} />
       <Hero personal={cv.personal} />
       <About profile={cv.profile} />
@@ -28,6 +30,10 @@ export default function App() {
       <Projects projects={cv.projects} />
       <Activities activities={cv.activities} />
       <Referees referees={cv.referees} />
+      
+      {/* Hidden layout specifically for high-fidelity PDF generation */}
+      <PrintLayout cv={cv} />
+    </div>
     </>
   )
 }

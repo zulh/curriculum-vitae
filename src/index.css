@@ -12,6 +12,11 @@ body {
   @apply bg-primary text-text-primary;
 }
 
+/* Base PDF handling */
+.pdf-only {
+  display: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -19,4 +24,37 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* PDF Generation Styles */
+body.pdf-mode .no-pdf {
+  display: none !important;
+}
+
+body.pdf-mode {
+  background-color: white !important;
+  color: #1e293b !important;
+}
+
+body.pdf-mode #cv-content {
+  background-color: white !important;
+  padding: 0;
+  margin: 0;
+}
+
+/* High-fidelity PDF layout controls */
+body.pdf-mode #cv-content > *:not(.pdf-only) {
+  display: none !important;
+}
+
+body.pdf-mode .pdf-only {
+  display: flex !important;
+  padding: 15mm !important;
+  min-height: 100vh;
+}
+
+body.pdf-mode .page-break-inside-avoid {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  display: block;
 }
