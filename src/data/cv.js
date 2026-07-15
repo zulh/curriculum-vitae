@@ -6,7 +6,7 @@ export const cv = {
     phone: '+6013-830 5184',
     email: 'a.zulhilmi92@gmail.com',
     location: 'Kuala Lumpur, Malaysia',
-    linkedin: 'https://linkedin.com/in/zulhilmi-ghazali',
+    linkedin: 'https://www.linkedin.com/in/ahmadzulhilmi182/',
   },
 
   profile:
