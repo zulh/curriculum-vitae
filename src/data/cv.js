@@ -28,7 +28,7 @@ export const cv = {
       role: 'Lead / Senior Software Engineer',
       period: '2024 – Present',
       client: 'Insurtech Platform',
-      logo: null,
+      logo: 'logos/senang.png',
       projects: [
         {
           title: "Digital Insurance Ecosystem & Touch 'n Go Mini Program",

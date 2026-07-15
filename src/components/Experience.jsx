@@ -16,24 +16,24 @@ export default function Experience({ experience }) {
               delay={Math.min(i * 0.08, 0.24)}
               className="group grid md:grid-cols-[190px_1fr] gap-6 md:gap-14 py-12 md:py-14 border-t border-line first:border-t-0 first:pt-0"
             >
-              {/* Left rail: period, logo, client */}
+              {/* Left rail: logo, period, client */}
               <div>
-                <p className="text-muted text-xs uppercase tracking-[0.22em]">{job.period}</p>
-                <div className="mt-5 w-11 h-11 rounded-md bg-logo-surface border border-line flex items-center justify-center overflow-hidden">
+                <div className="w-16 h-16 rounded-lg bg-white border border-line shadow-sm flex items-center justify-center overflow-hidden p-2.5">
                   {job.logo ? (
                     <img
                       src={job.logo}
                       alt={job.company}
-                      className="max-h-6 max-w-7 object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                      className="max-h-full max-w-full object-contain"
                       onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
                     />
                   ) : null}
-                  <span className={`font-serif text-lg text-muted ${job.logo ? 'hidden' : 'flex'}`}>
+                  <span className={`font-serif text-2xl text-slate-400 ${job.logo ? 'hidden' : 'flex'}`}>
                     {job.company.charAt(0)}
                   </span>
                 </div>
+                <p className="mt-5 text-muted text-xs uppercase tracking-[0.22em]">{job.period}</p>
                 {job.client && (
-                  <p className="mt-5 text-muted text-xs leading-relaxed max-w-[170px]">{job.client}</p>
+                  <p className="mt-3 text-muted text-xs leading-relaxed max-w-[170px]">{job.client}</p>
                 )}
               </div>
 
