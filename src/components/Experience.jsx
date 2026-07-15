@@ -61,7 +61,7 @@ export default function Experience({ experience }) {
                 <div className="space-y-12">
                   {job.projects.map((proj, j) => (
                     <div key={j} className="relative pl-6 border-l border-elevated/30 hover:border-accent/30 transition-colors duration-300">
-                      <div className="absolute -left-[0.35rem] top-1.5 w-1.5 h-1.5 rounded-full bg-elevated group-hover:bg-accent transition-colors duration-300" />
+                      <div className="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-elevated group-hover:bg-accent transition-colors duration-300" />
                       
                       <h4 className="text-lg font-bold text-text-primary mb-2 flex items-baseline gap-3">
                         {proj.title}
