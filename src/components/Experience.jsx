@@ -18,7 +18,7 @@ export default function Experience({ experience }) {
             >
               {/* Left rail: logo, period, client */}
               <div>
-                <div className="w-16 h-16 rounded-lg bg-white border border-line shadow-sm flex items-center justify-center overflow-hidden p-2.5">
+                <div className="w-20 h-20 rounded-xl bg-white border border-line shadow-sm flex items-center justify-center overflow-hidden p-3">
                   {job.logo ? (
                     <img
                       src={job.logo}
@@ -27,7 +27,7 @@ export default function Experience({ experience }) {
                       onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
                     />
                   ) : null}
-                  <span className={`font-serif text-2xl text-slate-400 ${job.logo ? 'hidden' : 'flex'}`}>
+                  <span className={`font-serif text-3xl text-slate-400 ${job.logo ? 'hidden' : 'flex'}`}>
                     {job.company.charAt(0)}
                   </span>
                 </div>
