@@ -140,7 +140,7 @@ export const cv = {
       },
       {
         title: 'Frontend',
-        items: ['Angular 19', 'NgRx', 'React.js', 'Tailwind CSS', 'HTML5 / CSS3', 'ASP.NET Blazor'],
+        items: ['Angular 19', 'NgRx', 'React.js', 'Tailwind CSS', 'HTML5 / CSS3', 'ASP.NET Blazor', 'Alipay+ Mini Program'],
       },
       {
         title: 'Backend',
