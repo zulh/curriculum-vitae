@@ -1,12 +1,6 @@
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import Hero from './Hero'
-
-vi.mock('@tsparticles/react', () => ({
-  default: () => null,
-  initParticlesEngine: vi.fn(() => Promise.resolve()),
-}))
-vi.mock('@tsparticles/slim', () => ({ loadSlim: vi.fn() }))
 
 const personal = {
   name: 'Ahmad Zulhilmi Ghazali',
@@ -19,8 +13,9 @@ const personal = {
 }
 
 describe('Hero', () => {
-  it('renders email and location', () => {
+  it('renders name, email and location', () => {
     render(<Hero personal={personal} />)
+    expect(screen.getByText(personal.name)).toBeInTheDocument()
     expect(screen.getByText(personal.email)).toBeInTheDocument()
     expect(screen.getByText(personal.location)).toBeInTheDocument()
   })
@@ -32,7 +27,7 @@ describe('Hero', () => {
 
   it('links out to LinkedIn', () => {
     render(<Hero personal={personal} />)
-    const link = screen.getByText('LinkedIn').closest('a')
+    const link = screen.getByText(/LinkedIn/).closest('a')
     expect(link).toHaveAttribute('href', personal.linkedin)
   })
 })

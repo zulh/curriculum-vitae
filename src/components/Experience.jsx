@@ -3,97 +3,72 @@ import { SectionHeading } from './About'
 
 export default function Experience({ experience }) {
   return (
-    <section id="experience" className="py-24 px-6 relative overflow-hidden bg-primary section-border-t">
-      {/* Background Glow */}
-      <div className="absolute top-1/4 -right-24 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -left-24 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="max-w-5xl mx-auto relative z-10">
+    <section id="experience" className="py-28 md:py-40 px-6 md:px-12 bg-paper hairline">
+      <div className="max-w-5xl mx-auto">
         <RevealDiv>
-          <SectionHeading>Professional Journey</SectionHeading>
-          <p className="text-text-muted mt-4 max-w-2xl text-sm leading-relaxed mb-16">
-            A timeline of my industrial exposure and professional growth, 
-            contributing to high-impact projects across diverse sectors.
-          </p>
+          <SectionHeading eyebrow="02 — Experience">Professional Journey</SectionHeading>
         </RevealDiv>
 
-        <div className="relative border-l border-elevated/40 ml-4 md:ml-6 pl-8 md:pl-12 space-y-20">
+        <div className="mt-14 md:mt-20">
           {experience.map((job, i) => (
-            <RevealDiv key={i} delay={i * 0.15} className="relative">
-              {/* Timeline Dot */}
-              <span className="absolute -left-[2.75rem] md:-left-[3.75rem] top-1 w-6 h-6 rounded-full bg-primary border-2 border-accent flex items-center justify-center shadow-[0_0_15px_var(--glow-accent)]">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              </span>
-
-              <div className="bg-[var(--bg-card)] backdrop-blur-md border border-border-dim p-6 md:p-8 rounded-2xl hover:border-accent/40 hover:shadow-xl transition-all duration-300 shadow-sm group">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
-                  <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 bg-logo-surface rounded-xl p-2 flex items-center justify-center border border-border-dim shadow-sm overflow-hidden">
-                      {job.logo ? (
-                        <img 
-                          src={job.logo} 
-                          alt={job.company} 
-                          className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 transition-all duration-500"
-                          onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex'; }}
-                        />
-                      ) : null}
-                      <div className={`w-full h-full items-center justify-center bg-accent/5 text-accent font-bold text-xl ${job.logo ? 'hidden' : 'flex'}`}>
-                        {job.company.charAt(0)}
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-black text-text-primary tracking-tight">{job.company}</h3>
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1">
-                        <span className="text-accent font-bold text-sm tracking-wide">{job.role}</span>
-                        <span className="hidden sm:inline w-1 h-1 rounded-full bg-elevated" />
-                        <span className="text-text-muted text-xs font-medium uppercase tracking-widest">{job.period}</span>
-                      </div>
-                    </div>
-                  </div>
-                  {job.client && (
-                    <div className="px-4 py-2 bg-accent/5 border border-accent/10 rounded-lg">
-                      <p className="text-[10px] text-accent font-bold uppercase tracking-[0.2em] mb-0.5">Primary Client</p>
-                      <p className="text-text-primary text-xs font-semibold">{job.client}</p>
-                    </div>
-                  )}
+            <RevealDiv
+              key={i}
+              delay={Math.min(i * 0.08, 0.24)}
+              className="group grid md:grid-cols-[190px_1fr] gap-6 md:gap-14 py-12 md:py-14 border-t border-line first:border-t-0 first:pt-0"
+            >
+              {/* Left rail: period, logo, client */}
+              <div>
+                <p className="text-muted text-xs uppercase tracking-[0.22em]">{job.period}</p>
+                <div className="mt-5 w-11 h-11 rounded-md bg-logo-surface border border-line flex items-center justify-center overflow-hidden">
+                  {job.logo ? (
+                    <img
+                      src={job.logo}
+                      alt={job.company}
+                      className="max-h-6 max-w-7 object-contain grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                      onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
+                    />
+                  ) : null}
+                  <span className={`font-serif text-lg text-muted ${job.logo ? 'hidden' : 'flex'}`}>
+                    {job.company.charAt(0)}
+                  </span>
                 </div>
+                {job.client && (
+                  <p className="mt-5 text-muted text-xs leading-relaxed max-w-[170px]">{job.client}</p>
+                )}
+              </div>
 
-                <div className="space-y-12">
-                  {job.projects.map((proj, j) => (
-                    <div key={j} className="relative pl-6 border-l border-elevated/30 hover:border-accent/30 transition-colors duration-300">
-                      <div className="absolute -left-[3.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-elevated group-hover:bg-accent transition-colors duration-300" />
-                      
-                      <h4 className="text-lg font-bold text-text-primary mb-2 flex items-baseline gap-3">
-                        {proj.title}
-                      </h4>
-                      
-                      {proj.description && (
-                        <p className="text-text-muted text-sm leading-relaxed mb-4 italic opacity-80">
-                          {proj.description}
-                        </p>
-                      )}
+              {/* Right: company, role, projects */}
+              <div>
+                <h3 className="font-serif text-3xl md:text-[2.4rem] leading-none text-ink">{job.company}</h3>
+                <p className="text-accent text-sm mt-2 tracking-wide">{job.role}</p>
 
-                      <ul className="space-y-3 mb-6">
-                        {proj.bullets.map((b, k) => (
-                          <li key={k} className="text-text-muted text-sm flex gap-3 leading-relaxed">
-                            <span className="text-accent font-bold text-xs mt-1 shrink-0">0{k + 1}</span>
-                            <span className="[&>strong]:text-text-primary [&>strong]:font-semibold">{formatBullet(b)}</span>
-                          </li>
+                {job.projects.map((proj, j) => (
+                  <div key={j} className="mt-9">
+                    <h4 className="text-ink font-medium text-lg tracking-tight">{proj.title}</h4>
+                    {proj.description && (
+                      <p className="text-muted text-sm leading-relaxed mt-2 italic max-w-2xl">{proj.description}</p>
+                    )}
+
+                    <ul className="mt-5 space-y-3">
+                      {proj.bullets.map((b, k) => (
+                        <li key={k} className="text-muted text-[15px] leading-relaxed flex gap-4">
+                          <span className="text-accent/60 select-none mt-2.5 shrink-0 w-4 h-px bg-accent/40" />
+                          <span className="[&>strong]:text-ink [&>strong]:font-semibold">{formatBullet(b)}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {proj.tech && (
+                      <div className="mt-6 flex flex-wrap gap-x-4 gap-y-1.5">
+                        {proj.tech.split(',').map(t => (
+                          <span key={t} className="text-[11px] uppercase tracking-[0.12em] text-muted">
+                            {t.trim()}
+                          </span>
                         ))}
-                      </ul>
-
-                      {proj.tech && (
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          {proj.tech.split(',').map(t => (
-                            <span key={t} className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 bg-elevated/40 text-text-muted rounded-md hover:bg-accent/10 hover:text-accent transition-all duration-200 border border-transparent hover:border-accent/20">
-                              {t.trim()}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </RevealDiv>
           ))}
@@ -107,7 +82,7 @@ export default function Experience({ experience }) {
 function formatBullet(text) {
   return text.split('**').map((part, i) =>
     i % 2 === 1
-      ? <strong key={i} className="text-text-primary font-semibold">{part}</strong>
+      ? <strong key={i} className="text-ink font-semibold">{part}</strong>
       : part
   )
 }

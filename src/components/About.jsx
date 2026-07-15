@@ -2,33 +2,20 @@ import { RevealDiv } from '../hooks/useScrollReveal'
 
 export default function About({ profile }) {
   return (
-    <section id="about" className="py-32 px-6 relative overflow-hidden bg-surface transition-colors duration-500 section-border-t">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border-dim to-transparent opacity-20" />
-      
-      <div className="max-w-4xl mx-auto relative z-10">
+    <section id="about" className="py-28 md:py-40 px-6 md:px-12 bg-paper-2 hairline">
+      <div className="max-w-4xl mx-auto">
         <RevealDiv>
-          <div className="flex flex-col md:flex-row items-start gap-12">
-            <div className="flex-none hidden md:block mt-2">
-              <div className="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
-                <ProfileIcon />
-              </div>
-            </div>
-            
-            <div className="flex-1">
-              <SectionHeading>Executive Summary</SectionHeading>
-              <div className="relative mt-10">
-                <span className="absolute -left-6 top-0 text-6xl text-accent/10 font-serif leading-none italic select-none">“</span>
-                <p className="text-text-primary/90 leading-relaxed text-lg md:text-xl font-medium tracking-tight">
-                  {profile}
-                </p>
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <Badge text="8+ Years Experience" />
-                  <Badge text="Production Workflows" />
-                  <Badge text="Full-Stack Engineering" />
-                </div>
-              </div>
-            </div>
+          <SectionHeading eyebrow="01 — Profile">Executive Summary</SectionHeading>
+        </RevealDiv>
+
+        <RevealDiv delay={0.1}>
+          <p className="mt-12 font-serif text-2xl md:text-[2rem] leading-[1.5] text-ink/85 font-normal">
+            {profile}
+          </p>
+          <div className="mt-12 flex flex-wrap gap-x-10 gap-y-3 text-muted text-[11px] uppercase tracking-[0.28em]">
+            <span>8+ Years</span>
+            <span>Insurtech · Aviation · Energy</span>
+            <span>Full-Stack Engineering</span>
           </div>
         </RevealDiv>
       </div>
@@ -36,29 +23,19 @@ export default function About({ profile }) {
   )
 }
 
-function Badge({ text }) {
+/**
+ * Editorial section heading — a small tracked eyebrow above a serif title.
+ * Shared by every section.
+ */
+export function SectionHeading({ children, eyebrow }) {
   return (
-    <span className="px-4 py-1.5 bg-accent/5 border border-accent/20 rounded-full text-[10px] font-black uppercase tracking-widest text-accent">
-      {text}
-    </span>
-  )
-}
-
-function ProfileIcon() {
-  return (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-    </svg>
-  )
-}
-
-export function SectionHeading({ children }) {
-  return (
-    <div className="relative group inline-block">
-      <h2 className="text-3xl md:text-4xl font-black text-text-primary tracking-tighter uppercase">
+    <div>
+      {eyebrow && (
+        <p className="text-muted text-[11px] uppercase tracking-[0.35em] mb-5">{eyebrow}</p>
+      )}
+      <h2 className="font-serif text-4xl md:text-5xl text-ink tracking-tight leading-none">
         {children}
       </h2>
-      <div className="absolute -bottom-2 left-0 w-1/3 h-1 bg-accent rounded-full transition-all duration-500 group-hover:w-full group-hover:shadow-[0_0_10px_var(--glow-accent)]" />
     </div>
   )
 }

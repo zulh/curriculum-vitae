@@ -1,41 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ── Editorial / quiet-luxury palette ──────────────────────────────
+   Light (default): warm paper + ink + a restrained sienna accent.    */
 :root {
-  --bg-primary: #ffffff;
-  --bg-surface: #f8fafc;
-  --bg-elevated: #f1f5f9;
-  --bg-card: #ffffff;
-  --text-primary: #0f172a;
-  --text-muted: #64748b;
-  --border-dim: #e2e8f0;
-  --particle-color: #64748b;
-  --particle-link: #cbd5e1;
-  --bg-dot: rgba(15, 23, 42, 0.08);
+  --paper: #faf8f3;       /* page background */
+  --paper-2: #f2eee5;     /* subtle raised surface */
+  --paper-3: #eae5d9;     /* dividers / faint fills */
+  --ink: #1f1b16;         /* primary text */
+  --muted: #756c5f;       /* secondary text */
+  --line: #e2dccf;        /* hairline rules */
+  --card: #ffffff;
   --logo-surface: #ffffff;
-  --glow-accent: rgba(56, 189, 248, 0.06);
+  --accent-rgb: 158 90 54;   /* warm sienna (rgb channels for /opacity) */
+
+  /* Legacy aliases (older components reference these var names directly). */
+  --bg-primary: var(--paper);
+  --bg-surface: var(--paper-2);
+  --bg-elevated: var(--paper-3);
+  --bg-card: var(--card);
+  --text-primary: var(--ink);
+  --text-muted: var(--muted);
+  --border-dim: var(--line);
+  --glow-accent: transparent;
+  --bg-dot: rgba(31, 27, 22, 0.05);
 }
 
+/* Refined warm near-black. */
 .dark {
-  --bg-primary: #0f172a;
-  --bg-surface: #1e293b;
-  --bg-elevated: #334155;
-  --bg-card: rgba(30, 41, 59, 0.5);
-  --text-primary: #f1f5f9;
-  --text-muted: #94a3b8;
-  --border-dim: #1e293b;
-  --particle-color: #38bdf8;
-  --particle-link: rgba(56, 189, 248, 0.2);
-  --bg-dot: rgba(255, 255, 255, 0.03);
-  --logo-surface: rgba(255, 255, 255, 0.05);
-  --glow-accent: rgba(56, 189, 248, 0.4);
-}
+  --paper: #17130f;
+  --paper-2: #1f1a15;
+  --paper-3: #2a231c;
+  --ink: #ece5d8;
+  --muted: #9a9082;
+  --line: #2b241d;
+  --card: #1c1712;
+  --logo-surface: #241d17;
+  --accent-rgb: 201 133 90;  /* lifted sienna for dark contrast */
 
-.section-border-t {
-  @apply border-t border-border-dim;
+  --bg-primary: var(--paper);
+  --bg-surface: var(--paper-2);
+  --bg-elevated: var(--paper-3);
+  --bg-card: var(--card);
+  --text-primary: var(--ink);
+  --text-muted: var(--muted);
+  --border-dim: var(--line);
+  --glow-accent: transparent;
+  --bg-dot: rgba(236, 229, 216, 0.04);
 }
 
 html {
@@ -43,12 +57,27 @@ html {
 }
 
 body {
-  @apply bg-primary text-text-primary transition-colors duration-300;
+  @apply bg-paper text-ink;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'kern', 'liga';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Base PDF handling */
-.pdf-only {
-  display: none !important;
+/* Headings default to the serif display face. */
+h1, h2, h3, h4 {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-optical-sizing: auto;
+}
+
+.font-serif {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-optical-sizing: auto;
+}
+
+.hairline {
+  @apply border-t border-line;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -60,9 +89,13 @@ body {
   }
 }
 
+/* Base: the print-only layout is hidden on screen. */
+.pdf-only {
+  display: none !important;
+}
+
 /* Print / Save-as-PDF: render ONLY the vector print layout.
-   This yields selectable, ATS-parseable text and lets the browser paginate
-   natively — no html2canvas rasterization. */
+   Selectable, ATS-parseable text with native pagination. */
 @media print {
   @page {
     size: A4;
@@ -83,7 +116,6 @@ body {
     background: #ffffff !important;
   }
 
-  /* Hide the interactive site chrome; show only the print layout. */
   #cv-content > *:not(.pdf-only) {
     display: none !important;
   }
