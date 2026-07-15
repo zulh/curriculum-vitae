@@ -27,7 +27,7 @@ export default function Navbar({ name, sections, theme, toggleTheme, mounted }) 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 no-pdf ${
-        scrolled ? 'py-4 bg-paper/85 backdrop-blur-md border-b border-line' : 'py-6 bg-transparent'
+        scrolled ? 'py-4 bg-paper/90 backdrop-blur-md border-b border-black/[0.06] dark:border-white/[0.05]' : 'py-6 bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 md:px-12 flex items-center justify-between">
