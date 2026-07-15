@@ -23,7 +23,7 @@ export default function About({ profile }) {
                   {profile}
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
-                  <Badge text="7+ Years Experience" />
+                  <Badge text="8+ Years Experience" />
                   <Badge text="Production Workflows" />
                   <Badge text="Full-Stack Engineering" />
                 </div>

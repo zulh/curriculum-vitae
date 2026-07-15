@@ -31,7 +31,7 @@ export default function PrintLayout({ cv }) {
             <div key={idx}>
               <h3 className="text-[11px] font-bold text-slate-900 mb-1.5 uppercase tracking-wide">{category.title}</h3>
               <p className="text-[11px] text-slate-700 leading-relaxed opacity-90">
-                {category.skills.map(s => s.name).join(', ')}
+                {category.items.join(', ')}
               </p>
             </div>
           ))}
@@ -128,12 +128,13 @@ export default function PrintLayout({ cv }) {
   )
 }
 
+// Bullets in cv.js mark emphasis with **double asterisks**; render those spans bold.
+// (Splitting on the literal marker avoids the stateful-global-regex bug of matching
+// against a shared /g regex, which flips matches on every other call.)
 function formatPDFBullet(text) {
-  const importantTerms = /(TNG Mini Program|TNG MP|99\.9%|40%|4 hours to 5 minutes)/g
-  
-  return text.split(importantTerms).map((part, i) => 
-    importantTerms.test(part) 
-      ? <strong key={i} className="text-slate-900 font-bold">{part}</strong> 
+  return text.split('**').map((part, i) =>
+    i % 2 === 1
+      ? <strong key={i} className="text-slate-900 font-bold">{part}</strong>
       : part
   )
 }

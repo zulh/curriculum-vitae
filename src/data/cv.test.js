@@ -5,18 +5,35 @@ describe('cv data', () => {
   it('has required personal fields', () => {
     expect(cv.personal.name).toBe('Ahmad Zulhilmi Ghazali')
     expect(cv.personal.email).toBe('a.zulhilmi92@gmail.com')
-    expect(cv.personal.title).toBe('Senior Software Engineer | Full Stack | Azure & GCP')
+    expect(cv.personal.title).toBeTruthy()
   })
 
-  it('has at least one experience entry with projects', () => {
+  it('has experience entries that each contain projects', () => {
     expect(cv.experience.length).toBeGreaterThan(0)
-    expect(cv.experience[0].projects.length).toBeGreaterThan(0)
+    cv.experience.forEach(job => {
+      expect(job.projects.length).toBeGreaterThan(0)
+    })
   })
 
-  it('all skills have a level between 0 and 100', () => {
-    cv.skills.forEach(skill => {
-      expect(skill.level).toBeGreaterThanOrEqual(0)
-      expect(skill.level).toBeLessThanOrEqual(100)
+  it('groups skills into non-empty categories (no numeric levels)', () => {
+    expect(cv.skills.categories.length).toBeGreaterThan(0)
+    cv.skills.categories.forEach(cat => {
+      expect(cat.title).toBeTruthy()
+      expect(Array.isArray(cat.items)).toBe(true)
+      expect(cat.items.length).toBeGreaterThan(0)
+    })
+  })
+
+  it('includes ITIL 4 and drops the mislabeled MCSA: Programming in C#', () => {
+    const names = cv.certifications.map(c => c.name)
+    expect(names).toContain('ITIL 4 Foundation')
+    expect(names).not.toContain('MCSA: Programming in C#')
+  })
+
+  it('does not expose referee contact details publicly', () => {
+    cv.referees.forEach(ref => {
+      expect(ref.phone).toBeUndefined()
+      expect(ref.email).toBeUndefined()
     })
   })
 })

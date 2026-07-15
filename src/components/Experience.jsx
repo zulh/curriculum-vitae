@@ -103,15 +103,11 @@ export default function Experience({ experience }) {
   )
 }
 
+// Bullets in cv.js mark emphasis with **double asterisks**; render those spans bold.
 function formatBullet(text) {
-  // Bold key items automatically? Or just return as is?
-  // Let's assume we want to bold terms like "Team Lead", "99.9% uptime", "4 hours to 5 minutes", "CI/CD", etc.
-  // For now, I'll allow HTML-like bolding if I manually added <strong> tags in cv.js (but I didn't)
-  // Instead, I'll just return it and let the user manually bold if they want, 
-  // OR I can do a simple regex for numbers and percentages.
-  return text.split(/(\d+\.?\d*%|\d+ hours|\d+ minutes|Team Lead|Technical Lead|Architected|Engineered|Spearheaded|TNG Mini Program|TNG MP)/g).map((part, i) => 
-    /(\d+\.?\d*%|\d+ hours|\d+ minutes|Team Lead|Technical Lead|Architected|Engineered|Spearheaded|TNG Mini Program|TNG MP)/.test(part) 
-      ? <strong key={i} className="text-text-primary font-bold">{part}</strong> 
+  return text.split('**').map((part, i) =>
+    i % 2 === 1
+      ? <strong key={i} className="text-text-primary font-semibold">{part}</strong>
       : part
   )
 }

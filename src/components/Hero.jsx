@@ -64,24 +64,21 @@ export default function Hero({ personal, theme }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl md:text-6xl font-black text-text-primary mb-2 leading-tight tracking-tight">
-            {personal.title}
+          <h1 className="text-5xl md:text-7xl font-black text-text-primary mb-4 leading-tight tracking-tight">
+            <TypeAnimation
+              sequence={[personal.name, 1000]}
+              wrapper="span"
+              speed={50}
+              repeat={0}
+              cursor={true}
+            />
           </h1>
-          <p className="text-accent text-sm md:text-lg font-bold tracking-[0.1em] mb-12 opacity-90">
+          <p className="text-2xl md:text-3xl font-bold text-text-primary/90 mb-2 tracking-tight">
+            {personal.title}
+          </p>
+          <p className="text-accent text-xs md:text-base font-bold tracking-[0.1em] mb-12 opacity-90">
             {personal.subtitle}
           </p>
-          <div className="text-5xl md:text-7xl font-black text-text-primary mb-8 leading-tight tracking-tight">
-            <span className="pdf-mode:hidden">
-              <TypeAnimation
-                sequence={[personal.name, 1000]}
-                wrapper="span"
-                speed={50}
-                repeat={0}
-                cursor={true}
-              />
-            </span>
-            <span className="hidden pdf-mode:inline">{personal.name}</span>
-          </div>
 
           <motion.div
             className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-text-muted text-sm"
@@ -89,9 +86,11 @@ export default function Hero({ personal, theme }) {
             animate={{ opacity: 1 }}
             transition={{ delay: 1, duration: 0.6 }}
           >
-            <ContactItem icon={<PhoneIcon />} text={personal.phone} />
-            <ContactItem icon={<MailIcon />} text={personal.email} />
+            <ContactItem icon={<MailIcon />} text={personal.email} href={`mailto:${personal.email}`} />
             <ContactItem icon={<LocIcon />} text={personal.location} />
+            {personal.linkedin && (
+              <ContactItem icon={<LinkedInIcon />} text="LinkedIn" href={personal.linkedin} external />
+            )}
           </motion.div>
 
           {/* CTA Buttons */}
@@ -135,18 +134,31 @@ function ArrowRightIcon({ className }) {
   )
 }
 
-function ContactItem({ icon, text }) {
-  return (
-    <div className="flex items-center gap-2 hover:text-accent transition-colors duration-200">
+function ContactItem({ icon, text, href, external }) {
+  const className = 'flex items-center gap-2 hover:text-accent transition-colors duration-200'
+  const inner = (
+    <>
       <span className="text-accent/80">{icon}</span>
       <span>{text}</span>
-    </div>
+    </>
   )
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={className}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
+        {inner}
+      </a>
+    )
+  }
+  return <div className={className}>{inner}</div>
 }
 
 // Icons
-const PhoneIcon = () => (
-  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+const LinkedInIcon = () => (
+  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5.001A2.5 2.5 0 014.98 3.5zM3 8.75h4v11.75H3V8.75zM9.5 8.75h3.83v1.6h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14v6.07h-4v-5.38c0-1.28-.02-2.93-1.79-2.93-1.79 0-2.06 1.4-2.06 2.84v5.47h-4V8.75z"/></svg>
 )
 const MailIcon = () => (
   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>

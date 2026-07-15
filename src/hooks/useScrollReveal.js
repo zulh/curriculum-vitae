@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useInView } from 'framer-motion'
 
 /**
  * RevealDiv - Scroll-reveal wrapper.
@@ -40,31 +40,4 @@ export function RevealDiv({ children, delay = 0, className = '', style = {}, ...
     },
     children
   )
-}
-
-/**
- * revealProps — kept for backward compatibility only.
- * The RevealDiv component is the preferred approach for FM v12.
- */
-export function revealProps(delay = 0) {
-  return {
-    initial: { opacity: 0, y: 20 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '0px 0px -60px 0px' },
-    transition: { duration: 0.5, ease: 'easeOut', delay },
-  }
-}
-
-export const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-}
-
-export const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-}
-
-export function useScrollReveal() {
-  return { revealProps }
 }

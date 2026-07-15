@@ -60,35 +60,41 @@ body {
   }
 }
 
-/* PDF Generation Styles */
-body.pdf-mode .no-pdf {
-  display: none !important;
-}
+/* Print / Save-as-PDF: render ONLY the vector print layout.
+   This yields selectable, ATS-parseable text and lets the browser paginate
+   natively — no html2canvas rasterization. */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
 
-body.pdf-mode {
-  background-color: white !important;
-  color: #1e293b !important;
-}
+  html,
+  body {
+    background: #ffffff !important;
+    color: #1e293b !important;
+  }
 
-body.pdf-mode #cv-content {
-  background-color: white !important;
-  padding: 0;
-  margin: 0;
-}
+  .no-pdf {
+    display: none !important;
+  }
 
-/* High-fidelity PDF layout controls */
-body.pdf-mode #cv-content > *:not(.pdf-only) {
-  display: none !important;
-}
+  #cv-content {
+    background: #ffffff !important;
+  }
 
-body.pdf-mode .pdf-only {
-  display: flex !important;
-  padding: 15mm !important;
-  min-height: 100vh;
-}
+  /* Hide the interactive site chrome; show only the print layout. */
+  #cv-content > *:not(.pdf-only) {
+    display: none !important;
+  }
 
-body.pdf-mode .page-break-inside-avoid {
-  page-break-inside: avoid;
-  break-inside: avoid;
-  display: block;
+  .pdf-only {
+    display: flex !important;
+    padding: 14mm 15mm !important;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
 }
