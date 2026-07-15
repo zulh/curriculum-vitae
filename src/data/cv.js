@@ -1,6 +1,6 @@
 export const cv = {
   personal: {
-    name: 'Ahmad Zulhilmi Ghazali',
+    name: 'Zulhilmi Ghazali',
     title: 'Full-Stack Software Engineer',
     subtitle: 'Building Production Systems, Integrations & User-Facing Workflows',
     phone: '+6013-830 5184',
@@ -31,18 +31,18 @@ export const cv = {
       logo: null,
       projects: [
         {
-          title: 'Digital Insurance Ecosystem & TNG Mini Program',
+          title: "Digital Insurance Ecosystem & Touch 'n Go Mini Program",
           description:
             'Vehicle insurance quotation, purchase, and policy issuance platform integrating major insurers and digital wallets.',
           bullets: [
-            'Led reliability improvements across insurance integration workflows and mentored a team of **3 junior developers** on production safety and code quality.',
+            'Led a **cross-functional team of 9** spanning development, business analysis, QA, and DevOps, directly mentoring **3 junior developers** on production safety and code quality.',
             'Built and maintained a vehicle insurance quotation portal (Angular 19 SSR) and its Node.js / TypeScript backend (GraphQL/Apollo, TypeORM), powering real-time quotation and issuance across **8+ insurers** (**200+ policies/day**) including Allianz, Zurich, Chubb, Etiqa, Tokio Marine, and Takaful Ikhlas.',
             'Delivered insurer-specific integration flows (VIX/NCD verification, variant resolution, agreed-value pricing, cover note issuance), each with distinct API contracts and business rules.',
-            "Launched quotation, purchase, and issuance on the **TNG Mini Program**, and built FPX, QR, and card payment flows via PayNet with callback verification, reconciliation, and retry/recovery.",
+            "Launched quotation, purchase, and issuance on the **Touch 'n Go (TNG) eWallet Mini Program**, and built FPX, QR, and card payment flows via PayNet with callback verification, reconciliation, and retry/recovery.",
             'Eliminated duplicate policy issuance under concurrent payment callbacks by making the issuance step **atomic and idempotent**, removing manual cancellations and support tickets.',
             'Owned **CI/CD** and releases across dev, staging, and production using GitLab CI, Docker, Kubernetes, and Helm.',
           ],
-          tech: 'Angular 19, Node.js, TypeScript, GraphQL / Apollo, TypeORM, MySQL, Docker, Kubernetes, GitLab CI',
+          tech: 'Angular 19, Node.js, TypeScript, Alipay+ Mini Program, GraphQL / Apollo, TypeORM, MySQL, Docker, Kubernetes, GitLab CI',
         },
       ],
     },

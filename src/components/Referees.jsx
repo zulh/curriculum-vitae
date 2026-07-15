@@ -27,7 +27,7 @@ export default function Referees({ referees }) {
 
         <footer className="mt-28 pt-8 border-t border-line text-center">
           <p className="text-muted text-[11px] uppercase tracking-[0.3em]">
-            © {new Date().getFullYear()} Ahmad Zulhilmi Ghazali
+            © {new Date().getFullYear()} Zulhilmi Ghazali
           </p>
         </footer>
       </div>

@@ -3,7 +3,7 @@ import { cv } from './cv'
 
 describe('cv data', () => {
   it('has required personal fields', () => {
-    expect(cv.personal.name).toBe('Ahmad Zulhilmi Ghazali')
+    expect(cv.personal.name).toBe('Zulhilmi Ghazali')
     expect(cv.personal.email).toBe('a.zulhilmi92@gmail.com')
     expect(cv.personal.title).toBeTruthy()
   })
