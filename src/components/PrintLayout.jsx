@@ -119,7 +119,7 @@ export default function PrintLayout({ cv }) {
       </div>
 
       {/* Professional Footer */}
-      <footer className="mt-12 pt-16 pb-12 text-center">
+      <footer className="mt-10 pt-6 text-center">
         <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest opacity-40 italic">
           References available upon request
         </p>
