@@ -15,7 +15,11 @@
   --line: #e2dccf;        /* hairline rules */
   --card: #ffffff;
   --logo-surface: #ffffff;
-  --accent-rgb: 158 90 54;   /* warm sienna (rgb channels for /opacity) */
+  /* rgb channels so Tailwind /opacity modifiers work (it cannot inject alpha
+     into a raw var() colour — the utility is silently dropped instead). */
+  --accent-rgb: 158 90 54;   /* warm sienna */
+  --paper-rgb: 250 248 243;
+  --ink-rgb: 31 27 22;
 
   /* Legacy aliases (older components reference these var names directly). */
   --bg-primary: var(--paper);
@@ -40,6 +44,8 @@
   --card: #1c1712;
   --logo-surface: #241d17;
   --accent-rgb: 201 133 90;  /* lifted sienna for dark contrast */
+  --paper-rgb: 23 19 15;
+  --ink-rgb: 236 229 216;
 
   --bg-primary: var(--paper);
   --bg-surface: var(--paper-2);

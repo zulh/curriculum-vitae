@@ -5,11 +5,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Editorial palette
-        paper: 'var(--paper)',
+        // Editorial palette. paper/ink/accent use rgb channels so /opacity
+        // modifiers actually compile (a raw var() colour silently drops them).
+        paper: 'rgb(var(--paper-rgb) / <alpha-value>)',
         'paper-2': 'var(--paper-2)',
         'paper-3': 'var(--paper-3)',
-        ink: 'var(--ink)',
+        ink: 'rgb(var(--ink-rgb) / <alpha-value>)',
         muted: 'var(--muted)',
         line: 'var(--line)',
         card: 'var(--card)',
